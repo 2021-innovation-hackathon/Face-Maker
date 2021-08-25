@@ -39,6 +39,7 @@ function check() {
     var now_seconds = ('0' + (now.getSeconds() - today.getSeconds())).slice(-2); 
     document.getElementById("today").innerHTML="접속시간 "+ now_hours + "시" + now_minutes + "분" + now_seconds + "초";
     document.getElementById("sec").innerHTML="스트레칭 안한지 벌써 "+ now_hours + "시" + now_minutes + "분" + now_seconds + "초";
+    
     if (sec > 20){
         
         if (false){
