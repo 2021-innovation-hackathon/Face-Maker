@@ -10,3 +10,21 @@ body {
   section.article{
     display: flex;
   }
+  section.article #canvas_div{
+    width: 450px;
+    height: 450px;
+  }
+  section.article #label-container{
+    width: 200px;
+  }
+  section.article #number{
+    display: block;
+  }
+  section.article #number #today{
+    margin-bottom: 20px;
+  }
+  section.article #number #sec{
+    margin-bottom: 20px;
+  }
+  
+ 
