@@ -11,8 +11,9 @@ class tm_function{
             
         const URL = "/model/posture_model/"; // 모델 주소
         let model, webcam, ctx, labelContainer, maxPredictions;
-        var status = "good"
-        var count = 0
+        var status = "good";
+        var count = 0;
+        var audio = new Audio('/sound/beep.MP3');
         
 
             
@@ -77,25 +78,23 @@ async function predict() {
     }
     
     else if (prediction[1].probability.toFixed(2) == 1.00) {
-        var audio = new Audio('/sound/beep.MP3');
         audio.play();
+        
         status = "bad_left"
     }
 
     else if (prediction[2].probability.toFixed(2) == 1.00) {
-        var audio = new Audio('/sound/beep.MP3');
         audio.play();
+        
         status = "bad_right"
     }
 
     else if (prediction[3].probability.toFixed(2) == 1.00) {
-        var audio = new Audio('/sound/beep.MP3');
         audio.play();
         status = "bad_back"
     }
 
     else if (prediction[4].probability.toFixed(2) == 1.00) {
-        var audio = new Audio('/sound/beep.MP3');
         audio.play();
         status = "bad_front"
     }
@@ -147,3 +146,4 @@ function tag() {
         animator()
     }, updatesPerSecond)
 }
+
