@@ -62,6 +62,7 @@ function check() {
             sound_check = false;
             canvas.style.display="block";
             document.getElementById("posetime").style.display="block";
+            document.getElementById("stretching_text").innerHTML = `정자세를 유지하세요!`;
         }
         //audio.play();
         

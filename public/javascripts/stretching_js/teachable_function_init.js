@@ -1,5 +1,7 @@
 //모션인식 초기화 함수이다.
 async function init() {
+    document.getElementById("button").style.display = "none";
+
     const URL = "https://teachablemachine.withgoogle.com/models/YZ6RTcqi4/";
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
