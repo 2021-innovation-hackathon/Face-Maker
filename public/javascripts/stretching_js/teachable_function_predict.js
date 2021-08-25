@@ -28,7 +28,8 @@ async function predict() {
         my_status = "nomal";
         document.getElementById("stretching_text").innerHTML = `성공!`;
         now_score = Math.round(prediction[1].probability*100);
-        document.getElementById("score").innerHTML="점수: " + now_score;
+        document.getElementById("score").innerHTML="현재점수: " + now_score;
+        document.getElementById("allscore").innerHTML += "<br>"+now_score;
         await sleep(500);
 
         if(count > 2){
@@ -40,6 +41,7 @@ async function predict() {
             canvas.style.display="none";
             document.getElementById("posetime").style.display="none";
             document.getElementById("stretching_text").innerHTML = `스트레칭 시간을 기다리세요!`;
+            document.getElementById("allscore").innerHTML = "기록: ";
         }
 
     }
@@ -47,7 +49,7 @@ async function predict() {
         my_status = "nomal";
         document.getElementById("stretching_text").innerHTML = `실패!`;
         now_score = Math.round(prediction[1].probability*100);
-        document.getElementById("score").innerHTML="점수: " + now_score;
+        document.getElementById("allscore").innerHTML += "<br>"+now_score;
         await sleep(500);
     }
     

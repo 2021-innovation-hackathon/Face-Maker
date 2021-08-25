@@ -17,7 +17,7 @@ async function init() {
     await webcam.setup(); // request access to the webcam
     await webcam.play();
     window.requestAnimationFrame(loop);
-
+    document.getElementById("stretching_text").innerHTML = `정자세를 유지하세요!`;
     // append/get elements to the DOM
     const canvas = document.getElementById("canvas");
     canvas.width = size; canvas.height = size;

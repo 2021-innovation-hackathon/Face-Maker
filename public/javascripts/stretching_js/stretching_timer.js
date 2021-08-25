@@ -61,7 +61,7 @@ function check() {
             my_status = "nomal";
             sound_check = false;
             canvas.style.display="block";
-            //document.querySelector("#message").style.display="block";
+            document.getElementById("posetime").style.display="block";
         }
         //audio.play();
         
