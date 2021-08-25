@@ -26,5 +26,20 @@ body {
   section.article #number #sec{
     margin-bottom: 20px;
   }
+  section.article #number .labels{
+    display: flex;
+  }
+  section.article #number .labels #progress progress{
+    display: block;
+    margin-left: 10px;
+    padding-top: 18px;
+  }
+  
+  #posetime{
+    position: absolute;
+    padding-left: 20px;
+    font-size: 40px;
+  }
+
   
  
