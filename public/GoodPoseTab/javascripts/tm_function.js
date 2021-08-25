@@ -7,7 +7,7 @@ class tm_function{
             // More API functions here:
             // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
             // the link to your model provided by Teachable Machine export panel
-            const URL = "/my_model/"; // 모델 주소
+            const URL = "/GoodPoseTab/my_model/"; // 모델 주소
             let model, webcam, ctx, labelContainer, maxPredictions;
 
 
@@ -63,25 +63,25 @@ class tm_function{
                 }
                 
                 else if (prediction[1].probability.toFixed(2) == 1.00) {
-                    var audio = new Audio('./sound/beep.MP3');
+                    var audio = new Audio('/GoodPoseTab/sound/beep.MP3');
                     audio.play();
                     status = "bad_left"
                 }
 
                 else if (prediction[2].probability.toFixed(2) == 1.00) {
-                    var audio = new Audio('./sound/beep.MP3');
+                    var audio = new Audio('/GoodPoseTab/sound/beep.MP3');
                     audio.play();
                     status = "bad_right"
                 }
 
                 else if (prediction[3].probability.toFixed(2) == 1.00) {
-                    var audio = new Audio('./sound/beep.MP3');
+                    var audio = new Audio('/GoodPoseTab/sound/beep.MP3');
                     audio.play();
                     status = "bad_back"
                 }
 
                 else if (prediction[4].probability.toFixed(2) == 1.00) {
-                    var audio = new Audio('./sound/beep.MP3');
+                    var audio = new Audio('/GoodPoseTab/sound/beep.MP3');
                     audio.play();
                     status = "bad_front"
                 }
