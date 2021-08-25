@@ -1,3 +1,4 @@
+//여러번 반복수행되는 predict함수이다. 자세의 정확도를 판단한다.
 async function predict() {
     // Prediction #1: run input through posenet
     // estimatePose can take in an image, video or canvas html element
@@ -25,9 +26,13 @@ async function predict() {
         my_status = "nomal";
         await sleep(500);
 
-        if(count > 3){
-            today = new Date();
+        if(count > 2){
+            
             count = 0;
+            my_status = "rest";
+            today = new Date();
+            webcam.pause();
+            canvas.style.display="none";
         }
 
     }

@@ -10,3 +10,4 @@ class MAIN {
     
   }
 }
+//MAIN으로 $target == 최상단 main div

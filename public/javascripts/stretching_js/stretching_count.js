@@ -1,3 +1,4 @@
+//스트레칭 횟수 표기 공간을 생성하는 클래스이다.
 class count_num{
     
     $count = null;
