@@ -1,4 +1,4 @@
-
+//각종 전역변수와 잘 사용되지않는 함수이다.
 let model, webcam, ctx, labelContainer, maxPredictions, my_status = "nomal";
 let count = 0;
 let progress = document.createElement("div");

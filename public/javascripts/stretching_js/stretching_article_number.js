@@ -1,3 +1,4 @@
+//정보를 나타내는 클래스이다.
 class number{
     $time = null;
     $today = null;
