@@ -1,3 +1,4 @@
+
 //시간 측정을 위한 클래스이다.
 class timer{
     $timer = null;
