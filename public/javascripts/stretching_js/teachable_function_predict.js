@@ -9,6 +9,7 @@ async function predict() {
         const classPrediction =
             prediction[i].className + ": " + prediction[i].probability.toFixed(2);
         labelContainer.childNodes[i].innerHTML = classPrediction;
+        progress.childNodes[i].value = prediction[i].probability.toFixed(2) * 100;
     }
     document.getElementById("count").innerHTML="스트레칭 횟수: " + count;
     if(prediction[1].probability > 0.99){

@@ -1,7 +1,7 @@
 
 let model, webcam, ctx, labelContainer, maxPredictions, my_status = false;
 let count = 0;
-
+let progress = document.createElement("div");
 
 async function loop(timestamp) {
     webcam.update(); // update the webcam frame
