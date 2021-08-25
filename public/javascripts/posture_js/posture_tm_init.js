@@ -6,21 +6,31 @@ class tm_init{
       $tm_init.className = "tm_init";
       $tm_init.innerHTML = `
       <h1>this is main</h1>
-        <div id="today"></div>
-        <div id="sec"></div>
-        <div id="count"></div>
-        
-        <div>Teachable Machine Pose Model</div>
-    <button type="button" onclick="init()">Start</button>
-    <section class="picture">
-        <div><canvas id="canvas"></canvas></div>
-    </section>
-    <section class="labels">
-    <div id="label-container"></div>
-    <div id="progress"></div>
-    </section>
+      <div id="today"></div>
+      <div id="sec"></div>
+      <div id="count"></div>
+      
+      <div>Teachable Machine Pose Model</div>
+      <button type="button" onclick="init()">Start</button>
+      
+      <section class="picture">
+      <div><canvas id="canvas"></canvas></div>
+      </section>
+      
+      <section class="labels">
+      <div id="label-container"></div>
+      <div id="progress"></div>
+      </section>
     
-    
+      
+      <label class="switch">
+      <input type="checkbox" onclick="onoffsound();">
+      <span class="slider round"></span>
+      </label>
+      <p>OFF</p><p style="display:none;">ON</p>
+      
+      
+      
       `;
       this.$tm_init = $tm_init;
       $target.appendChild(this.$tm_init);
