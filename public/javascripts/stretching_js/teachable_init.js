@@ -1,10 +1,24 @@
 class teachable_init{
-    $init = null;
-
+    $start_button = null;
+    
     constructor($target){
-        var $init = document.createElement("div");
-        $init.innerHTML=`test`;
-        this.$init = $init;
-        $target.appendChild(this.$init);
+        var $start_button = document.createElement("div");
+        
+
+        $start_button.id="button";
+        
+
+
+        this.$start_button = $start_button;
+        
+
+
+
+        $start_button.innerHTML=`<button type="button" onclick="init()">Start</button>`;
+        
+
+
+        $target.appendChild($start_button);
+        
     }
 }
