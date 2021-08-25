@@ -38,24 +38,38 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.get('/page', function(request, response) { 
-  db.query(`SELECT * FROM stretching`, function(error2,result){
-    if(error2){
-      throw error2;
-    }
-    else {
-      //console.log(result);
-      response.status(200).json(result[0]);
-    }
-   
-   });
-    
-  
-  //let answer = dbtest.home();
-  //console.log(answer)
-  //response.status(200).json(answer);
-  });
+router.get('/page/1', function(req, res, next) { 
+  res.render('page_1');
+});
+router.get('/page/2', function(req, res, next) { 
+  res.render('page_2');
+});
+router.get('/page/3', function(req, res, next) { 
+  res.render('page_3');
+});
 
+
+router.get('/one/stretching', function(request, response){
+  db.query(`SELECT * FROM stretching where stretching_id=1`, function(err, result){
+    if(err)throw err;
+    
+    response.status(200).json(result[0]);
+  })
+})
+router.get('/two/stretching', function(request, response){
+  db.query(`SELECT * FROM stretching where stretching_id=2`, function(err, result){
+    if(err)throw err;
+    
+    response.status(200).json(result[0]);
+  })
+})
+router.get('/three/stretching', function(request, response){
+  db.query(`SELECT * FROM stretching where stretching_id=3`, function(err, result){
+    if(err)throw err;
+    
+    response.status(200).json(result[0]);
+  })
+})
 
 
 module.exports = router;
