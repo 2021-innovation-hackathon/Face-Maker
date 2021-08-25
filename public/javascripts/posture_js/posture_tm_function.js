@@ -14,6 +14,18 @@ class tm_function{
         var status = "good";
         var count = 0;
         var audio = new Audio('/sound/beep.MP3');
+
+        var online = new Date();
+        var today = new Date();
+        var now = new Date();
+        var cnt_goodpose = 0;
+        var cnt_badpose = 0;
+        
+        
+        
+        
+        
+    
         
 
             
@@ -22,6 +34,8 @@ class tm_function{
         $target.appendChild($tm_function);
     }
 }
+
+
 
 async function init() {
     const modelURL = URL + "model.json";
@@ -74,7 +88,10 @@ async function predict() {
     // prediction[0] => prediction[1] 좋은자세에서 나쁜자세로 갈 때 알림음을 들려줌
     if (prediction[0].probability.toFixed(2) == 1.00) {
         
+        //cnt_goodpose++;
+        //console.log(cnt_goodpose);
         status = "good"
+        
     }
     
     else if (prediction[1].probability.toFixed(2) == 1.00) {
@@ -125,25 +142,5 @@ function drawPose(pose) {
             tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
         }
     }
-}
-
-function tag() {
-    let progress = document.querySelector('.progressTag')
-    let interval = 1
-    let updatesPerSecond = 1000 / 60
-    let end = progress.max * 0.8
-    
-    function animator() {
-        progress.value = progress.value + interval
-        if ( progress.value + interval < end){
-        setTimeout(animator, updatesPerSecond);
-        } else { 
-        progress.value = end
-        }
-    }
-    
-    setTimeout(() => {
-        animator()
-    }, updatesPerSecond)
 }
 
