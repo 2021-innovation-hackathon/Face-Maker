@@ -4,9 +4,11 @@ let count = 0;
 let progress = document.createElement("div");
 var audio = new Audio('/sound/alarm.wav');
 var audio2 = new Audio('/sound/dingdong.mp3');
+var sound_check = false;
+
 var online = new Date();
 var today = new Date();
-var now = new Date();
+var now = new Date();   
 
 async function loop(timestamp) {
     webcam.update(); // update the webcam frame
