@@ -10,6 +10,8 @@ var online = new Date();
 var today = new Date();
 var now = new Date();   
 
+var now_score = 0;
+
 async function loop(timestamp) {
     webcam.update(); // update the webcam frame
     await predict();

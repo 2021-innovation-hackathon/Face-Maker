@@ -40,6 +40,11 @@ body {
     padding-left: 20px;
     font-size: 40px;
   }
+  #stretching_text{
+    position: absolute;
+    padding-left: 80px;
+    font-size: 20px;
+  }
 
   
  

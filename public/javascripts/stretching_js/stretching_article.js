@@ -1,5 +1,5 @@
 //article은 웹캠인 canvas와 이미지인 img 정보 칸인 number로 이루어져있다.
-//posetime 은 스트레칭 타이밍을 알려주는 숫자로 웹캠 위에 곂쳐진다.
+
 class article{
     $article = null;
     $canvas =null;
@@ -7,7 +7,7 @@ class article{
 
     $label_container = null;
     $number = null;
-    $posetime = null;
+    $text = null;
 
     constructor($target){
         //article 구역 추가
@@ -22,19 +22,22 @@ class article{
         var $img = document.createElement("div");
 
         var $number = document.createElement("div");
-        var $posetime = document.createElement("div");
+        var $text = document.createElement("div");
+        
 
         $canvas.id = "canvas_div";
         $img.id = "img";
 
         $number.id="number";
-        $posetime.id = "posetime";
+        $text.id="text";
+        
 
         this.$canvas = $canvas;
         this.$img = $img;
 
         this.$number = $number;
-        this.$posetime = $posetime;
+        this.$text = $text;
+        
 
         $canvas.innerHTML = `<canvas id="canvas"></canvas>`;
         $img.innerHTML = `<img src="images/pose_1.png"></img>`;
@@ -43,9 +46,10 @@ class article{
         $article.appendChild($canvas);
         $article.appendChild($img);
         $article.appendChild($number);
-        $article.appendChild($posetime);
-        $number = new number($number);
+        $article.appendChild($text);
 
+        $number = new number($number);
+        $text = new text($article);
         
 
         
