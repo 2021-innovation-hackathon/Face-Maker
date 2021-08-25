@@ -28,6 +28,7 @@ async function predict() {
         my_status = "nomal";
         document.getElementById("stretching_text").innerHTML = `성공!`;
         now_score = Math.round(prediction[1].probability*100);
+        fetch(`/stretching/average/${now_score}`);
         document.getElementById("score").innerHTML="현재점수: " + now_score;
         document.getElementById("allscore").innerHTML += "<br>"+now_score;
         await sleep(500);
@@ -50,6 +51,7 @@ async function predict() {
         my_status = "nomal";
         document.getElementById("stretching_text").innerHTML = `실패!`;
         now_score = Math.round(prediction[1].probability*100);
+        fetch(`/stretching/average/${now_score}`);
         document.getElementById("allscore").innerHTML += "<br>"+now_score;
         await sleep(500);
     }

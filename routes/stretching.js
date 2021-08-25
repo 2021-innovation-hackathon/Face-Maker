@@ -59,15 +59,25 @@ router.get('/count', function(req, res) {
   })
 })
 router.get('/alltime', function(req, res) {
+
+  db.query(`UPDATE stretching set alltime=alltime+1 WHERE stretching_id=1`, function(err, result){
+    if(err)throw err;
   
+    res.status(200).json(result[0]);
+  })
   
+})
+
+router.get('/average/:pageId', function(req,res){
+  console.log(req.params.pageId);
+  db.query(`UPDATE stretching set averagecount=averagecount+1, sumscore= sumscore+${req.params.pageId} WHERE stretching_id=1`, function(err, result){
+    if(err)throw err;
+  db.query(`UPDATE stretching set average=sumscore/averagecount where stretching_id=1`, function(error3, result2){
+    res.status(200).json(result2[0]);
+  })
     
-  
-    db.query(`UPDATE stretching set alltime=alltime+1 WHERE stretching_id=1`, function(err, result){
-      if(err)throw err;
-    
-      res.status(200).json(result[0]);
-    })
+  })
+
   
 })
 
