@@ -42,6 +42,7 @@ async function predict() {
             document.getElementById("posetime").style.display="none";
             document.getElementById("stretching_text").innerHTML = `스트레칭 시간을 기다리세요!`;
             document.getElementById("allscore").innerHTML = "기록: ";
+            fetch("/stretching/count");
         }
 
     }

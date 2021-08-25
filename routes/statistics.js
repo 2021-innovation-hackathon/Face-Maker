@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var dbtest = require('../public/javascripts/statistics_js/dbtest.js');
 var mysql = require('mysql');
 var db_config = {
   host:'us-cdbr-east-04.cleardb.com',

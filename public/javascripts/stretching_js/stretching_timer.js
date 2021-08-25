@@ -33,6 +33,7 @@ function check() {
     now = new Date();
     
     var seconds = Math.round((now - online)/1000);
+    fetch(`/stretching/alltime`);
     var print_seconds = seconds%60;
     var minutes = Math.floor(seconds/60);
     var print_minutes = minutes%60;
