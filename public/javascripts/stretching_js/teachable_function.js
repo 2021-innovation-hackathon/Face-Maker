@@ -1,16 +1,5 @@
-class teachable_function{
 
-    $teachable_init = null;
-    constructor($target){
-
-        var $teachable_init = document.createElement("script");
-        $teachable_init.innerHTML = `let model, webcam, ctx, labelContainer, maxPredictions;`;
-        this.$teachable_init = $teachable_init;
-        $target.appendChild($teachable_init);
-
-
-    }
-}
+let model, webcam, ctx, labelContainer, maxPredictions;
 
 async function init() {
     const URL = "https://teachablemachine.withgoogle.com/models/YZ6RTcqi4/";
