@@ -1,4 +1,4 @@
-console.log("app is running!");
+console.log("바른자세 시작");
 
 class MAIN {
   $target = null;
