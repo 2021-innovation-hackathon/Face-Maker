@@ -1,3 +1,4 @@
+//모션인식 초기화 함수이다.
 async function init() {
     const URL = "https://teachablemachine.withgoogle.com/models/YZ6RTcqi4/";
     const modelURL = URL + "model.json";
@@ -22,7 +23,13 @@ async function init() {
     canvas.width = size; canvas.height = size;
     ctx = canvas.getContext("2d");
     labelContainer = document.getElementById("label-container");
+
+    progress.id="progress";
+
     for (let i = 0; i < maxPredictions; i++) { // and class labels
         labelContainer.appendChild(document.createElement("div"));
+        progress.appendChild(document.createElement("progress"));
+        progress.childNodes[i].value = 0;
+        progress.childNodes[i].max = 100;
     }
 }
