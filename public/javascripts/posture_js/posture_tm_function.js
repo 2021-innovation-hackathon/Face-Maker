@@ -47,6 +47,10 @@ async function init() {
     labelContainer = document.getElementById("label-container");
     for (let i = 0; i < maxPredictions; i++) { // and class labels
         labelContainer.appendChild(document.createElement("div"));
+        progress.appendChild(document.createElement("progress"));
+        progress.childNodes[i].value = 0;
+        progress.childNodes[i].max = 100;
+
     }
 }
 
@@ -103,8 +107,10 @@ async function predict() {
     for (let i = 0; i < maxPredictions; i++) {
         const classPrediction =
             prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-        labelContainer.childNodes[i].innerHTML = classPrediction;
+        //labelContainer.childNodes[i].innerHTML = classPrediction;
+        progress.childNodes[i].value = prediction[i].probability.toFixed(2) * 100;
     }
+    
 
     // finally draw the poses
     drawPose(pose);
@@ -122,13 +128,13 @@ function drawPose(pose) {
     }
 }
 
-async function tag () {
+function tag() {
     let progress = document.querySelector('.progressTag')
     let interval = 1
     let updatesPerSecond = 1000 / 60
     let end = progress.max * 0.8
     
-    function animator () {
+    function animator() {
         progress.value = progress.value + interval
         if ( progress.value + interval < end){
         setTimeout(animator, updatesPerSecond);
