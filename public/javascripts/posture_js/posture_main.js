@@ -1,0 +1,1 @@
+new MAIN(document.querySelector("#main"));
