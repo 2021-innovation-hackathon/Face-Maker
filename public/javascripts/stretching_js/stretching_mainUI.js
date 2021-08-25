@@ -10,4 +10,7 @@ class MainUI {
         
         
     }
-  }
+}
+var online = new Date();
+var today = new Date();
+var now = new Date();
