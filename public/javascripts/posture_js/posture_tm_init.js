@@ -28,7 +28,9 @@ class tm_init{
       <span class="slider round"></span>
       </label>
       <p>OFF</p><p style="display:none;">ON</p>
-
+      
+      
+      
       `;
       this.$tm_init = $tm_init;
       $target.appendChild(this.$tm_init);
