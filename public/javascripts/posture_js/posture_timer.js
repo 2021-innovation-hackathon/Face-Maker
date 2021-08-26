@@ -38,7 +38,17 @@ function check() {
     var hours = Math.floor(minutes/60); 
     
     
-    document.getElementById("usetime").innerHTML= hours + ":" + print_minutes + ":" + print_seconds;
+    document.getElementById("usetime").innerHTML = hours + ":" + print_minutes + ":" + print_seconds;
+    
+    document.getElementById("goodposetime").innerHTML = "나쁜 자세 총 합 :" +cnt0;
+    document.getElementById("badposetime").innerHTML = "나쁜 자세 총 합 :"+ (cnt1 + cnt2 + cnt3 + cnt4 + cnt5) +"";
+    document.getElementById("badpose_left_time").innerHTML = "나쁜 자세 총 합 :" +cnt2;
+    document.getElementById("badpose_rigth_time").innerHTML = "나쁜 자세 총 합 :" +cnt3;
+    document.getElementById("badpose_back_time").innerHTML = "나쁜 자세 총 합 :" +cnt4;
+    document.getElementById("badpose_front_time").innerHTML = "나쁜 자세 총 합 :" +cnt5;
+    document.getElementById("NonePeople_time").innerHTML = "나쁜 자세 총 합 :" +cnt6;
+
+    
     
     
    
