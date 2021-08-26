@@ -15,7 +15,7 @@ async function predict() {
     document.getElementById("count").innerHTML="스트레칭 횟수: " + count;
     
     
-    if(prediction[0].probability > 0.99 && my_status == "nomal"){
+    if(prediction[0].probability > 0.8 && my_status == "nomal"){
         ready();
         
         switch(count){
@@ -43,7 +43,7 @@ async function predict() {
         
         
     }
-    else if(prediction[1].probability > 0.99 && my_status == "pose" && count == 0){
+    else if(prediction[1].probability > 0.8 && my_status == "pose" && count == 0){
         count++;
         document.querySelector("img").src="/images/uppose_2.png";
         audio2.play();
@@ -55,7 +55,7 @@ async function predict() {
         document.getElementById("allscore").innerHTML += now_score + "점 ";
         await sleep(500);
     }
-    else if(prediction[2].probability > 0.99 && my_status == "pose" && count == 1){
+    else if(prediction[2].probability > 0.8 && my_status == "pose" && count == 1){
         count++;
         document.querySelector("img").src="/images/uppose_2.png";
         audio2.play();
@@ -67,7 +67,7 @@ async function predict() {
         document.getElementById("allscore").innerHTML += now_score + "점 ";
         await sleep(500);
     }
-    else if(prediction[3].probability > 0.99 && my_status == "pose" && count == 2){
+    else if(prediction[3].probability > 0.8 && my_status == "pose" && count == 2){
         count++;
         document.querySelector("img").src="/images/uppose_2.png";
         audio2.play();
@@ -79,7 +79,7 @@ async function predict() {
         document.getElementById("allscore").innerHTML += now_score + "점 ";
         await sleep(500);
     }
-    else if(prediction[4].probability > 0.99 && my_status == "pose" && count == 3){
+    else if(prediction[4].probability > 0.8 && my_status == "pose" && count == 3){
         count++;
         document.querySelector("img").src="/images/uppose_2.png";
         audio2.play();
@@ -91,7 +91,7 @@ async function predict() {
         document.getElementById("allscore").innerHTML += now_score + "점 ";
         await sleep(500);
     }
-    else if(prediction[5].probability > 0.99 && my_status == "pose" && count == 4){
+    else if(prediction[5].probability > 0.8 && my_status == "pose" && count == 4){
         count++;
         document.querySelector("img").src="/images/uppose_2.png";
         audio2.play();
