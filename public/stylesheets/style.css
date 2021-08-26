@@ -368,3 +368,17 @@ button img {
 .stArticleContainer .GaugeContainer .Gauge .Fill {
   width: 0;
 }
+
+progress {
+  -webkit-appearance: none;
+}
+
+::-webkit-progress-bar {
+  border-radius: 20px 20px 20px 20px; 
+  background-color: grey;
+}
+
+::-webkit-progress-value {
+  border-radius: 20px 20px 20px 20px; 
+  background-color: skyblue;
+}
