@@ -1,0 +1,123 @@
+:root {
+  /* color */
+  --color-beige: #fdfcee;
+  --color-white: #ffffff;
+  --color-blue: #229be6;
+  --color-black: #212529;
+  --color-grey: #d2d2d2;
+  --color-back: #202020;
+
+  /* font size */
+  --font-xl: 50px;
+  --font-l: 40px;
+  --font-m: 25px;
+  --font-s: 22px;
+
+  /* layout size */
+  --layout-xl: 150px;
+  --layout-l: 100px;
+  --layout-m: 50px;
+  --layout-s: 20px;
+  --layout-ss: 10px;
+}
+
+@font-face {
+  font-family: "BinggraeTaom";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.1/BinggraeTaomA1.tff")
+    format("tff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-back);
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+button img {
+  height: 40px;
+  width: 40px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font-family: "BinggraeTaom";
+  font-size: var(--font-s);
+  color: var(--color-white);
+  box-sizing: border-box;
+}
+
+#App {
+  height: 100%;
+  width: 100%;
+}
+
+.MainDiv {
+  width: 100%;
+  height: 100%;
+  padding: var(--layout-m);
+  padding-top: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.DesignBar {
+  width: 100vw;
+  height: 10px;
+  background-color: var(--color-blue);
+}
+
+.MenuContainer {
+  width: 100%;
+  height: 200px;
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.MenuContainer > .Button {
+  margin-right: 100px;
+}
+
+.BtnContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.BtnContainer .MenuBtn {
+  padding: 20px;
+  margin-right: 150px;
+  text-align: center;
+  font-size: var(--font-m);
+}
+
+.ContentContainer {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border-radius: 30px;
+  box-shadow: 0px 5px 30px rgba(21, 25, 29, 40%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.TextLine {
+  margin-right: 300px;
+  font-size: var(--font-m);
+}
