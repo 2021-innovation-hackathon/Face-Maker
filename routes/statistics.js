@@ -1,34 +1,38 @@
 var express = require('express');
 var router = express.Router();
-var mysql = require('mysql');
-var db_config = {
-  host:'us-cdbr-east-04.cleardb.com',
-  user:'b629f7bf92c0a3',
-  password:'cf6f0b58',
-  database:'heroku_0d9db5affa3ffb5'
-};
-
-function handleDisconnect() {
-  db = mysql.createConnection(db_config);
-  db.connect(function(err) {            
-    if(err) {                            
-      console.log('error when connecting to db:', err);
-      setTimeout(handleDisconnect, 2000); 
-    }
-    console.log("connected");                                   
-  });                                 
+var db = require('./db');
+// var mysql = require('mysql');
+// var db_config = {
+//   host:'us-cdbr-east-04.cleardb.com',
+//   user:'b629f7bf92c0a3',
+//   password:'cf6f0b58',
+//   database:'heroku_0d9db5affa3ffb5'
+// };
+// db = mysql.createConnection(db_config);
+// db.connect(function(err){
+//   console.log("connect");
+// })
+// function handleDisconnect() {
+//   db = mysql.createConnection(db_config);
+//   db.connect(function(err) {            
+//     if(err) {                            
+//       console.log('error when connecting to db:', err);
+//       setTimeout(handleDisconnect, 2000); 
+//     }
+//     console.log("connected");                                   
+//   });                                 
                                          
-  db.on('error', function(err) {
-    console.log('db error', err);
-    if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
-      return handleDisconnect();                      
-    } else {                                    
-      throw err;                              
-    }
-  });
-}
+//   db.on('error', function(err) {
+//     console.log('db error', err);
+//     if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
+//       return handleDisconnect();                      
+//     } else {                                    
+//       throw err;                              
+//     }
+//   });
+// }
 
-handleDisconnect();
+// handleDisconnect();
 
 
 /* GET home page. */
@@ -64,6 +68,28 @@ router.get('/two/stretching', function(request, response){
 })
 router.get('/three/stretching', function(request, response){
   db.query(`SELECT * FROM stretching where stretching_id=3`, function(err, result){
+    if(err)throw err;
+    
+    response.status(200).json(result[0]);
+  })
+})
+
+router.get('/one/posture', function(request, response){
+  db.query(`SELECT * FROM posture where posture_id=1`, function(err, result){
+    if(err)throw err;
+    
+    response.status(200).json(result[0]);
+  })
+})
+router.get('/two/posture', function(request, response){
+  db.query(`SELECT * FROM posture where posture_id=2`, function(err, result){
+    if(err)throw err;
+    
+    response.status(200).json(result[0]);
+  })
+})
+router.get('/three/posture', function(request, response){
+  db.query(`SELECT * FROM posture where posture_id=3`, function(err, result){
     if(err)throw err;
     
     response.status(200).json(result[0]);
