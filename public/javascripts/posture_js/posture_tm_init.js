@@ -35,7 +35,7 @@ class tm_init{
     
       
       <section class="goodpose3">
-      <div id="usetime">00:00</div>
+      <div id="usetime"></div>
       <div id="goodposetime"></div>
       <div id="badposetime"></div>
       <div id="badpose_left_time"></div>
