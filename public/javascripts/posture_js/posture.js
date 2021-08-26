@@ -1,65 +1,88 @@
-//ok
-class tm_function {
-  $tm_function = null;
-  constructor($target) {
-    var $tm_function = document.createElement("script");
-    $tm_function.type = "text/javascript";
-    $tm_function.innerHTML = `
-        // More API functions here:
-        // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
-        // the link to your model provided by Teachable Machine export panel
-            
-            
-        const URL = "/model/posture_model/"; // 모델 주소
-        let model, webcam, ctx, labelContainer, progressContainer, maxPredictions;
-        
-        let modelclassname = ["바른 자세","왼쪽으로 치우쳤어요","오른쪽으로 치우쳤어요","뒤로 치우쳤어요","앞으로 치우쳤어요","사용자가 화면에 없어요"];
+const URL = "/model/posture_model/"; // 모델 주소
+let model, webcam, ctx, labelContainer, progressContainer, maxPredictions;
 
-        var status = "good";
-        
-        
-        
-        var count = 0;
-        
+timerId = setInterval(check, 1000);
 
-        var audio = new Audio('/sound/beep.MP3');
-        var onoff = false;
-        var online = new Date();
-        var today = new Date();
-        var now = new Date();
-        
-        var playb0 = true;
-        var playb1 = true;
-        var playb2 = true;
-        var playb3 = true;
-        var playb4 = true;
-        var playb5 = true;
+var audio = new Audio("/sound/beep.MP3");
+var onoff = false;
+var online = new Date();
+var today = new Date();
+var now = new Date();
 
-        var cnt0 = 0;
-        var cnt1 = 0;
-        var cnt2 = 0;
-        var cnt3 = 0;
-        var cnt4 = 0;
-        var cnt5 = 0;
-        
-        
-        
-        
-        
-        
-    
-        
+var playb0 = true;
+var playb1 = true;
+var playb2 = true;
+var playb3 = true;
+var playb4 = true;
+var playb5 = true;
 
-            
-        `;
-    this.$tm_function = $tm_function;
-    $target.appendChild($tm_function);
+var cnt0 = 0;
+var cnt1 = 0;
+var cnt2 = 0;
+var cnt3 = 0;
+var cnt4 = 0;
+var cnt5 = 0;
+
+init();
+setSoundBtn();
+
+function setSoundBtn() {}
+
+function check() {
+  now = new Date();
+
+  var seconds = Math.round((now - online) / 1000);
+  fetch(`/posture/alltime`);
+  var print_seconds = seconds % 60;
+  var minutes = Math.floor(seconds / 60);
+  var print_minutes = minutes % 60;
+  var hours = Math.floor(minutes / 60);
+
+  let values = document.getElementsByClassName("Value");
+  values[0].innerText = cnt4;
+  values[1].innerText = cnt3;
+  values[2].innerText = cnt1;
+  values[3].innerText = cnt2;
+
+  let gauges = document.getElementsByClassName("Fill");
+  let sum = cnt0 + cnt1 + cnt2 + cnt3 + cnt4;
+  gauges[0].style.width = (cnt0 / sum) * 81 * 100;
+  gauges[1].style.width = (cnt4 / sum) * 3.24 * 100;
+  gauges[2].style.width = (cnt3 / sum) * 3.24 * 100;
+  gauges[3].style.width = (cnt1 / sum) * 3.24 * 100;
+  gauges[4].style.width = (cnt2 / sum) * 3.24 * 100;
+
+  console.log(cnt5);
+}
+
+function audiocontrol(audio, onoff) {
+  if (onoff) {
+    audio.play();
+  }
+}
+
+function soundon() {
+  onoff = true;
+}
+
+function soundoff() {
+  onoff = false;
+}
+
+function onoffsound() {
+  count++;
+  $("p").toggle();
+
+  if (count % 2 == 1) {
+    soundon();
+  } else {
+    soundoff();
   }
 }
 
 async function init() {
-  const modelURL = "/model/posture_model/" + "model.json";
-  const metadataURL = "/model/posture_model/" + "metadata.json";
+  const modelURL = URL + "model.json";
+  const metadataURL = URL + "metadata.json";
 
   // load the model and metadata
   // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
@@ -68,30 +91,19 @@ async function init() {
   maxPredictions = model.getTotalClasses();
 
   // Convenience function to setup a webcam
-  const size = 400;
+  const width = 800;
+  const height = 600;
   const flip = true; // whether to flip the webcam
-  webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
+  webcam = new tmPose.Webcam(width, height, flip); // width, height, flip
   await webcam.setup(); // request access to the webcam
   await webcam.play();
   window.requestAnimationFrame(loop);
 
   // append/get elements to the DOM
-  const canvas = document.getElementsByClass("Camera")[0];
-  canvas.width = size;
-  canvas.height = size;
+  const canvas = document.getElementById("canvas");
+  canvas.width = width;
+  canvas.height = height;
   ctx = canvas.getContext("2d");
-
-  // section 2부분
-  labelContainer = document.getElementById("label-container");
-  progressContainer = document.getElementById("progress-container");
-
-  for (let i = 0; i < maxPredictions; i++) {
-    // and class labels
-    labelContainer.appendChild(document.createElement("div"));
-    progressContainer.appendChild(document.createElement("progress"));
-    progressContainer.childNodes[i].value = 0;
-    progressContainer.childNodes[i].max = 100;
-  }
 }
 
 async function loop(timestamp) {
@@ -107,7 +119,7 @@ async function predict() {
   // Prediction 2: run input through teachable machine classification model
   const prediction = await model.predict(posenetOutput);
 
-  if (prediction[0].probability.toFixed(2) == 1.0) {
+  if (prediction[0].probability.toFixed(2) >= 0.7) {
     status = "Good";
     if (playb0) {
       spendtimedata();
@@ -154,12 +166,6 @@ async function predict() {
     }
   }
 
-  for (let i = 0; i < maxPredictions; i++) {
-    labelContainer.childNodes[i].innerHTML = modelclassname[i];
-    progressContainer.childNodes[i].value =
-      prediction[i].probability.toFixed(2) * 100;
-  }
-
   // finally draw the poses
   drawPose(pose);
 }
@@ -168,11 +174,6 @@ function drawPose(pose) {
   if (webcam.canvas) {
     ctx.drawImage(webcam.canvas, 0, 0);
     // draw the keypoints and skeleton
-    if (pose) {
-      const minPartConfidence = 0.5;
-      tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
-      tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
-    }
   }
 }
 

@@ -7,12 +7,5 @@ class MainUI {
     this.$tm_function = new tm_function($target);
     this.$tm_init = new tm_init($target);
     this.$time = new timer($target);
-    
-
   }
-  
-  
-
-  
-    
 }

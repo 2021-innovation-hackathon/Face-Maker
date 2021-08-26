@@ -1,7 +1,6 @@
-//ok
 //모션인식 초기화 함수이다.
 async function init() {
-  document.getElementById("button").style.display = "none";
+  //document.getElementById("button").style.display = "none";
   //앉은 버젼 https://teachablemachine.withgoogle.com/models/YZ6RTcqi4/
   //선 버젼 https://teachablemachine.withgoogle.com/models/0InPsuv7U/
   let URL = "https://teachablemachine.withgoogle.com/models/YZ6RTcqi4/";
@@ -15,21 +14,22 @@ async function init() {
   maxPredictions = model.getTotalClasses();
 
   // Convenience function to setup a webcam
-  const size = 450;
+  const width = 800;
+  const height = 600;
   const flip = true; // whether to flip the webcam
-  webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
+  webcam = new tmPose.Webcam(800, 600, flip); // width, height, flip
   await webcam.setup(); // request access to the webcam
   await webcam.play();
   window.requestAnimationFrame(loop);
   document.getElementById("stretching_text").innerHTML = `정자세를 유지하세요!`;
   // append/get elements to the DOM
-  const canvas = document.getElementById("canvas");
-  canvas.width = size;
-  canvas.height = size;
+  const canvas = document.getElementsByClassName("Camera");
+  canvas.width = width;
+  canvas.height = height;
   ctx = canvas.getContext("2d");
-  labelContainer = document.getElementById("label-container");
+  //labelContainer = document.getElementById("label-container");
 
-  progress.id = "progress";
+  //progress.id = "progress";
 
   for (let i = 0; i < maxPredictions; i++) {
     // and class labels
