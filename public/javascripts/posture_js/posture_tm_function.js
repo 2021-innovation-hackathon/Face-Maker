@@ -15,17 +15,32 @@ class tm_function{
         let modelclassname = ["바른 자세","왼쪽으로 치우쳤어요","오른쪽으로 치우쳤어요","뒤로 치우쳤어요","앞으로 치우쳤어요","사용자가 화면에 없어요"];
 
         var status = "good";
+        
+        
+        
         var count = 0;
         
+
         var audio = new Audio('/sound/beep.MP3');
         var onoff = false;
         var online = new Date();
         var today = new Date();
         var now = new Date();
         
+        var playb0 = true;
+        var playb1 = true;
+        var playb2 = true;
+        var playb3 = true;
+        var playb4 = true;
+        var playb5 = true;
+
+        var cnt0 = 0;
+        var cnt1 = 0;
+        var cnt2 = 0;
+        var cnt3 = 0;
+        var cnt4 = 0;
+        var cnt5 = 0;
         
-        var cnt_goodpose = 0;
-        var cnt_badpose = 0;
         
         
         
@@ -102,33 +117,59 @@ async function predict() {
 
     if (prediction[0].probability.toFixed(2) == 1.00) {
         status = "Good"
-        spendtimedata();
-        
-        
+        if (playb0){
+            spendtimedata();
+            playb0 = false;
+        }
     }
     
     else if (prediction[1].probability.toFixed(2) == 1.00) {
         status = "Bad_left"        
         audiocontrol(audio,onoff);
+
+        if (playb1){
+            spendtimedata();
+            playb1 = false;
+        }
     }
 
     else if (prediction[2].probability.toFixed(2) == 1.00) {
         audiocontrol(audio,onoff);
         status = "Bad_right"
+
+        if (playb2){
+            spendtimedata();
+            playb2 = false;
+        }
     }
 
     else if (prediction[3].probability.toFixed(2) == 1.00) {
         audiocontrol(audio,onoff);
         status = "Bad_back"
+
+        if (playb3){
+            spendtimedata();
+            playb3 = false;
+        }
     }
 
     else if (prediction[4].probability.toFixed(2) == 1.00) {
         audiocontrol(audio,onoff);
         status = "Bad_front"
+        
+        if (playb4){
+            spendtimedata();
+            playb4 = false;
+        }
     }
 
-    else {
+    else if (prediction[5].probability.toFixed(2) == 1.00) {
         status = "None"
+
+        if (playb5){
+            spendtimedata();
+            playb5= false;
+        }
     }
 
     for (let i = 0; i < maxPredictions; i++) {
@@ -162,12 +203,47 @@ function sleep(ms) {
 async function spendtimedata(){
     
     if (status == "Good") { //86400 == 24시간
-        for (let i = 0 ;i < 86400; i++) {
-            await sleep(1000);
-            cnt_goodpose++
-            console.log(cnt_goodpose);
-        }
+        cnt0++
+        //console.log("좋은자세 :" + cnt0 + "초");
+        await sleep(1000);
+        playb0 = true;
     }
+
+    else if(status == "Bad_left"){
+        cnt1++
+        //console.log(cnt1);
+        await sleep(1000);
+        playb1 = true;
+    }
+
+    else if(status == "Bad_right"){
+        cnt2++
+        //console.log(cnt2);
+        await sleep(1000);
+        playb2 = true;
+    }
+
+    else if(status == "Bad_back"){
+        cnt3++
+        //console.log("뒤 : "+ cnt3 + " 초");
+        await sleep(1000);
+        playb3 = true;
+    }
+
+    else if(status == "Bad_front"){
+        cnt4++
+        //console.log(cnt4);
+        await sleep(1000);
+        playb4 = true;
+    }
+
+    else if(status == "None"){
+        cnt5++
+        //console.log(cnt5);
+        await sleep(1000);
+        playb5 = true;
+    }
+    
 
     
 }

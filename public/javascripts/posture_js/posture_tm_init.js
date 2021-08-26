@@ -42,6 +42,8 @@ class tm_init{
       <div id="badpose_rigth_time"></div>
       <div id="badpose_back_time"></div>
       <div id="badpose_front_time"></div>
+      <div id="NonePeople_time"></div>
+      
       </section>
       
       
