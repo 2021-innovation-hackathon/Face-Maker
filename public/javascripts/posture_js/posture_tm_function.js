@@ -204,42 +204,42 @@ async function spendtimedata(){
     
     if (status == "Good") { //86400 == 24시간
         cnt0++
-        console.log("좋은자세 :" + cnt0 + "초");
+        //console.log("좋은자세 :" + cnt0 + "초");
         await sleep(1000);
         playb0 = true;
     }
 
     else if(status == "Bad_left"){
         cnt1++
-        console.log(cnt1);
+        //console.log(cnt1);
         await sleep(1000);
         playb1 = true;
     }
 
     else if(status == "Bad_right"){
         cnt2++
-        console.log(cnt2);
+        //console.log(cnt2);
         await sleep(1000);
         playb2 = true;
     }
 
     else if(status == "Bad_back"){
         cnt3++
-        console.log("뒤 : "+ cnt3 + " 초");
+        //console.log("뒤 : "+ cnt3 + " 초");
         await sleep(1000);
         playb3 = true;
     }
 
     else if(status == "Bad_front"){
         cnt4++
-        console.log(cnt4);
+        //console.log(cnt4);
         await sleep(1000);
         playb4 = true;
     }
 
     else if(status == "None"){
         cnt5++
-        console.log(cnt5);
+        //console.log(cnt5);
         await sleep(1000);
         playb5 = true;
     }
