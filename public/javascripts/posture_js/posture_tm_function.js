@@ -163,7 +163,7 @@ async function predict() {
         }
     }
 
-    else {
+    else if{
         status = "None"
 
         if (playb5){
