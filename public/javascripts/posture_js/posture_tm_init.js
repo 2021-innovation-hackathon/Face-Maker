@@ -7,6 +7,7 @@ class tm_init{
       $tm_init.innerHTML = `  
       
       
+
       
       
       <section class="goodpose1">
@@ -47,6 +48,9 @@ class tm_init{
       </section>
       
       
+      
+
+
       
       `;
       this.$tm_init = $tm_init;
