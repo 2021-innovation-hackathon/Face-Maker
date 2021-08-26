@@ -22,6 +22,8 @@ class tm_function{
         var online = new Date();
         var today = new Date();
         var now = new Date();
+        
+        
         var cnt_goodpose = 0;
         var cnt_badpose = 0;
         
@@ -95,21 +97,19 @@ async function predict() {
     const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
     // Prediction 2: run input through teachable machine classification model
     const prediction = await model.predict(posenetOutput);
-    
-    
-    // 효과음 (제작)
+
     
 
     if (prediction[0].probability.toFixed(2) == 1.00) {
         status = "Good"
+        spendtimedata();
+        
         
     }
     
     else if (prediction[1].probability.toFixed(2) == 1.00) {
-        status = "Bad_left"
-        
+        status = "Bad_left"        
         audiocontrol(audio,onoff);
-
     }
 
     else if (prediction[2].probability.toFixed(2) == 1.00) {
@@ -155,10 +155,20 @@ function drawPose(pose) {
 }
 
 
-
-
-function audiocontrol(audio, onoff){
-    if(onoff){
-        audio.play();
-    }
+function sleep(ms) {
+    return new Promise((r) => setTimeout(r, ms));
 }
+
+async function spendtimedata(){
+    
+    if (status == "Good") { //86400 == 24시간
+        for (let i = 0 ;i < 86400; i++) {
+            await sleep(1000);
+            cnt_goodpose++
+            console.log(cnt_goodpose);
+        }
+    }
+
+    
+}
+
