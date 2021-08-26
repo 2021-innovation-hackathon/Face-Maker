@@ -17,37 +17,19 @@ async function predict() {
   if (prediction[0].probability > 0.8 && my_status == "nomal") {
     ready();
 
-    switch (count) {
-      case 0:
-        document.getElementById(
-          "stretching_text"
-        ).innerHTML = `스트레칭 동작을 실시하세요!`;
-        document.querySelector("img").src = "/images/uppose_1.png";
-        break;
-      case 1:
-        document.getElementById(
-          "stretching_text"
-        ).innerHTML = `스트레칭 동작을 실시하세요!`;
-        document.querySelector("img").src = "/images/uppose_3.png";
-        break;
-      case 2:
-        document.getElementById(
-          "stretching_text"
-        ).innerHTML = `스트레칭 동작을 실시하세요!`;
-        document.querySelector("img").src = "/images/uppose_4.png";
-        break;
-      case 3:
-        document.getElementById(
-          "stretching_text"
-        ).innerHTML = `스트레칭 동작을 실시하세요!`;
-        document.querySelector("img").src = "/images/uppose_5.png";
-        break;
-      case 4:
-        document.getElementById(
-          "stretching_text"
-        ).innerHTML = `스트레칭 동작을 실시하세요!`;
-        document.querySelector("img").src = "/images/uppose_6.png";
-        break;
+    if (count > 4) {
+      count = 0;
+      my_status = "rest";
+      today = new Date();
+      webcam.pause();
+      canvas.style.display = "none";
+      document.getElementById("posetime").style.display = "none";
+      document.getElementById(
+        "stretching_text"
+      ).innerHTML = `스트레칭 시간을 기다리세요!`;
+      document.getElementById("allscore").innerHTML = "기록: ";
+      fetch("/stretching/count");
+      audio_pickto.pause();
     }
   } else if (
     prediction[1].probability > 0.8 &&
