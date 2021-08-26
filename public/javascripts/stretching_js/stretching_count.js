@@ -8,13 +8,13 @@ class count_num{
         var $count = document.createElement("div");
         this.$count = $count;
         $count.id="count";
-        $count.innerHTML = "스트레칭 횟수: " + count;
+        $count.innerHTML = "스트레칭 횟수: " + count + " 번";
         $target.appendChild($count);
         
         var $score = document.createElement("div");
         this.$score = $score;
         $score.id = "score";
-        $score.innerHTML = "현재점수: " + now_score;
+        $score.innerHTML = "현재점수: " + now_score + " 점";
         $target.appendChild($score);
 
         var $allscore = document.createElement("div");

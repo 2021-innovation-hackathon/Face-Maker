@@ -52,7 +52,7 @@ async function predict() {
         now_score = Math.round(prediction[1].probability*100);
         fetch(`/stretching/average/${now_score}`);
         document.getElementById("score").innerHTML="현재점수: " + now_score;
-        document.getElementById("allscore").innerHTML += "<br>"+now_score;
+        document.getElementById("allscore").innerHTML += now_score + "점 ";
         await sleep(500);
     }
     else if(prediction[2].probability > 0.99 && my_status == "pose" && count == 1){
@@ -64,7 +64,7 @@ async function predict() {
         now_score = Math.round(prediction[2].probability*100);
         fetch(`/stretching/average/${now_score}`);
         document.getElementById("score").innerHTML="현재점수: " + now_score;
-        document.getElementById("allscore").innerHTML += "<br>"+now_score;
+        document.getElementById("allscore").innerHTML += now_score + "점 ";
         await sleep(500);
     }
     else if(prediction[3].probability > 0.99 && my_status == "pose" && count == 2){
@@ -76,7 +76,7 @@ async function predict() {
         now_score = Math.round(prediction[3].probability*100);
         fetch(`/stretching/average/${now_score}`);
         document.getElementById("score").innerHTML="현재점수: " + now_score;
-        document.getElementById("allscore").innerHTML += "<br>"+now_score;
+        document.getElementById("allscore").innerHTML += now_score + "점 ";
         await sleep(500);
     }
     else if(prediction[4].probability > 0.99 && my_status == "pose" && count == 3){
@@ -88,7 +88,7 @@ async function predict() {
         now_score = Math.round(prediction[4].probability*100);
         fetch(`/stretching/average/${now_score}`);
         document.getElementById("score").innerHTML="현재점수: " + now_score;
-        document.getElementById("allscore").innerHTML += "<br>"+now_score;
+        document.getElementById("allscore").innerHTML += now_score + "점 ";
         await sleep(500);
     }
     else if(prediction[5].probability > 0.99 && my_status == "pose" && count == 4){
@@ -100,16 +100,13 @@ async function predict() {
         now_score = Math.round(prediction[5].probability*100);
         fetch(`/stretching/average/${now_score}`);
         document.getElementById("score").innerHTML="현재점수: " + now_score;
-        document.getElementById("allscore").innerHTML += "<br>"+now_score;
+        document.getElementById("allscore").innerHTML += now_score + " 점";
         await sleep(500);
     }
     
     else if(my_status=="pose"){
         my_status = "nomal";
         document.getElementById("stretching_text").innerHTML = `실패!`;
-        now_score = Math.round(prediction[1].probability*100);
-        fetch(`/stretching/average/${now_score}`);
-        document.getElementById("allscore").innerHTML += "<br>"+now_score;
         await sleep(500);
     }
     

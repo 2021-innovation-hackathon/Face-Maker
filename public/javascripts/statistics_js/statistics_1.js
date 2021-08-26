@@ -23,16 +23,16 @@ fetch("/statistics/one/stretching")
     id = res.stretching_id;
     alltime = res.alltime;
     count = res.count;
-    average = res.average;
+    average = Math.round(res.average);
     sumscore = res.sumscore;
     var cycle = Math.round(alltime/count)
     stretching.innerHTML = `<div id="stretching">
     <h2>스트레칭</div>
     <div>아이디: ${id}</div>
     <div>누적 사용 시간: ${alltime} 초</div>
-    <div>스트레칭 횟수: ${count}</div>
-    <div>평균 스트레칭 점수: ${average}</div>
-    <div>누적 스트레칭 점수: ${sumscore}</div>
+    <div>스트레칭 횟수: ${count} 회</div>
+    <div>평균 스트레칭 점수: ${average} 점</div>
+    <div>누적 스트레칭 점수: ${sumscore} 점</div>
     <div>스트레칭 주기: ${cycle} 초</div>
     </div> `
     article.appendChild(stretching);
