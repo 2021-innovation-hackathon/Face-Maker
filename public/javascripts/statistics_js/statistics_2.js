@@ -22,19 +22,22 @@ fetch("/statistics/two/stretching")
     
     id = res.stretching_id;
     alltime = res.alltime;
+    var stmin = Math.round(alltime/60);
+    var sthour = Math.round(stmin/60);
     count = res.count;
     average = Math.round(res.average);
     sumscore = res.sumscore;
     var cycle = Math.round(alltime/count)
-
+    var cymin = Math.round(cycle/60);
+    var cyhour = Math.round(cymin/60);
     stretching.innerHTML = `<div id="stretching">
     <h2>스트레칭</div>
     <div>아이디: ${id}</div>
-    <div>누적 사용 시간: ${alltime} 초</div>
+    <div>누적 사용 시간: ${sthour} 시 ${stmin%60} 분 ${alltime%60} 초</div>
     <div>스트레칭 횟수: ${count} 회</div>
     <div>평균 스트레칭 점수: ${average} 점</div>
     <div>누적 스트레칭 점수: ${sumscore} 점</div>
-    <div>스트레칭 주기: ${cycle} 초</div>
+    <div>스트레칭 주기: ${cyhour} 시${cymin%60} 분 ${cycle%60} 초</div>
     </div> `
     
     article.appendChild(stretching);
@@ -42,9 +45,12 @@ fetch("/statistics/two/stretching")
 fetch("/statistics/two/posture")
 .then((res)=>res.json())
 .then((res)=>{
-    console.log(res.alltime);
+    
     var id = res.posture_id;
     var alltime = res.alltime;
+    var pomin = Math.round(alltime/60);
+    var pohour = Math.round(pomin/60);
+
     var goodpose = res.goodpose;
     var leftpose = res.leftpose;
     var rightpose = res.rightpose;
@@ -53,9 +59,9 @@ fetch("/statistics/two/posture")
     var nonetime  = res.nonetime;
     var badpose = leftpose + rightpose + backpose + frontpose;
     posture.innerHTML = `<div id="posture">
-    <h2>바른 자세</div>
+    <h2>바른 자세</h2>
     <div>아이디: ${id}</div>
-    <div>누적 사용 시간: ${alltime} 초</div>
+    <div>누적 사용 시간: ${pohour} 시 ${pomin%60} 분 ${alltime%60} 초</div>
     <div>좋은 자세 유지 시간: ${goodpose} 초</div>
     <div>나쁜 자세 유지 시간: ${badpose} 초</div>
     <div>왼쪽 자세: ${leftpose} 초</div>

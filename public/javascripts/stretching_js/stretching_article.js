@@ -40,7 +40,7 @@ class article{
         
 
         $canvas.innerHTML = `<canvas id="canvas"></canvas>`;
-        $img.innerHTML = `<img src="/images/pose_2.png"></img>`;
+        $img.innerHTML = `<img src="/images/loding.png"></img>`;
         
 
         $article.appendChild($canvas);
