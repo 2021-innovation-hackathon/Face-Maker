@@ -1,36 +1,36 @@
 var express = require("express");
 var router = express.Router();
-var db = require("./db.js");
 
-// var mysql = require('mysql');
-// var db_config = {
-//   host:'us-cdbr-east-04.cleardb.com',
-//   user:'b629f7bf92c0a3',
-//   password:'cf6f0b58',
-//   database:'heroku_0d9db5affa3ffb5'
-// };
 
-// function handleDisconnect() {
-//   db = mysql.createConnection(db_config);
-//   db.connect(function(err) {
-//     if(err) {
-//       console.log('error when connecting to db:', err);
-//       setTimeout(handleDisconnect, 2000);
-//     }
-//     console.log("connected");
-//   });
+var mysql = require('mysql');
+var db_config = {
+  host:'us-cdbr-east-04.cleardb.com',
+  user:'b629f7bf92c0a3',
+  password:'cf6f0b58',
+  database:'heroku_0d9db5affa3ffb5'
+};
 
-//   db.on('error', function(err) {
-//     console.log('db error', err);
-//     if(err.code === 'PROTOCOL_CONNECTION_LOST') {
-//       return handleDisconnect();
-//     } else {
-//       throw err;
-//     }
-//   });
-// }
+function handleDisconnect() {
+  db = mysql.createConnection(db_config);
+  db.connect(function(err) {            
+    if(err) {                            
+      console.log('error when connecting to db:', err);
+      setTimeout(handleDisconnect, 2000); 
+    }
+    console.log("connected");                                   
+  });                                 
+                                         
+  db.on('error', function(err) {
+    console.log('db error', err);
+    if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
+      return handleDisconnect();                      
+    } else {                                    
+      throw err;                              
+    }
+  });
+}
 
-// handleDisconnect();
+handleDisconnect();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -66,10 +66,25 @@ router.get("/alltime", function (req, res) {
     function (err, result) {
       if (err) throw err;
 
+
+router.get('/count', function(req, res) {
+
+    db.query(`UPDATE stretching set count=count+1 WHERE stretching_id=1`, function(err, result){
+      if(err)throw err;
+    
       res.status(200).json(result[0]);
-    }
-  );
-});
+    
+  })
+})
+router.get('/alltime', function(req, res) {
+
+  db.query(`UPDATE stretching set alltime=alltime+1 WHERE stretching_id=1`, function(err, result){
+    if(err)throw err;
+  
+    res.status(200).json(result[0]);
+  })
+  
+})
 
 router.get("/average/:pageId", function (req, res) {
   console.log(req.params.pageId);
