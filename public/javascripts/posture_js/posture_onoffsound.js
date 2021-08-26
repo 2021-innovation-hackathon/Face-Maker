@@ -1,13 +1,20 @@
-
-function onoffsound(){
-
-	$("p").toggle();
-    
+function soundon(){
+	onoff = true;
 }
 
+function soundoff(){
+	onoff = false;
+}
 
+function onoffsound(){
+	count++
+	$("p").toggle();
 
-// var check = $("input[type='checkbox']");
-//     check.click(function(){
-// 	$("p").toggle();
-//     });
+	if (count % 2 == 1){
+		soundon();
+	}
+	else{
+		soundoff();
+	}
+	
+}
