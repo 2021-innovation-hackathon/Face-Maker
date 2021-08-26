@@ -4,6 +4,7 @@ let count = 0;
 let progress = document.createElement("div");
 var audio = new Audio('/sound/alarm.wav');
 var audio2 = new Audio('/sound/dingdong.mp3');
+var audio_pickto = new Audio('/sound/pickto.mp3');
 var sound_check = false;
 
 var online = new Date();

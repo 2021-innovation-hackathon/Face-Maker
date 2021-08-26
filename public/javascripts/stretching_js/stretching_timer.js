@@ -55,6 +55,7 @@ function check() {
         if (my_status == "rest"){
             if (sound_check == false){
                 audio.play();
+                audio_pickto.play();
                 sound_check = true;
                 window.open("/stretching/alert", "_blank", "width=200, height=200, top=300, left=500 toolbar=no, menubar=no,location=no, scrollbars=no,status=no,resizable=no");
             }
