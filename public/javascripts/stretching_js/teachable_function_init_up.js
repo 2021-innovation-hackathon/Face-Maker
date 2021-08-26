@@ -3,7 +3,7 @@ async function init() {
     document.getElementById("button").style.display = "none";
     //앉은 버젼 https://teachablemachine.withgoogle.com/models/YZ6RTcqi4/
     //선 버젼 https://teachablemachine.withgoogle.com/models/0InPsuv7U/
-    let URL = "https://teachablemachine.withgoogle.com/models/YZ6RTcqi4/";
+    let URL = "https://teachablemachine.withgoogle.com/models/0InPsuv7U/";
     let modelURL = URL + "model.json";
     let metadataURL = URL + "metadata.json";
 

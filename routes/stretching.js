@@ -40,6 +40,9 @@ handleDisconnect();
 router.get('/', function(req, res, next) {
   res.render('stretching', { title: '스트레칭' });
 });
+router.get('/up', function(req, res, next) {
+  res.render('stretching_up', { title: 'up!스트레칭' });
+});
 router.get('/alert', function(req, res, next) {
   res.render('alert', { title: '스트레칭알람' });
 });
