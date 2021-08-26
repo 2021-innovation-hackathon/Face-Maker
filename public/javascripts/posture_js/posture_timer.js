@@ -41,12 +41,13 @@ function check() {
     document.getElementById("usetime").innerHTML = hours + ":" + print_minutes + ":" + print_seconds;
     
     document.getElementById("goodposetime").innerHTML = "좋은 자세 :" +cnt0 +"초";
-    document.getElementById("badposetime").innerHTML = "나쁜 자세 :"+ (cnt1 + cnt2 + cnt3 + cnt4 + cnt5) +"초";
-    document.getElementById("badpose_left_time").innerHTML = "왼쪽 틀어짐 :" +cnt2 +"초";
-    document.getElementById("badpose_rigth_time").innerHTML = "오른쪽 틀어짐 :" +cnt3 +"초";
-    document.getElementById("badpose_back_time").innerHTML = "뒤 기울어짐 :" +cnt4 +"초";
-    document.getElementById("badpose_front_time").innerHTML = "앞으로 기울어짐 :" +cnt5 +"초";
-    document.getElementById("NonePeople_time").innerHTML = "나쁜 자세 총 합 :" +cnt6 +"초";
+    document.getElementById("badposetime").innerHTML = "나쁜 자세 :"+ (cnt1 + cnt2 + cnt3 + cnt4) +"초";
+    document.getElementById("badpose_left_time").innerHTML = "왼쪽 틀어짐 :" +cnt1 +"초";
+    document.getElementById("badpose_rigth_time").innerHTML = "오른쪽 틀어짐 :" +cnt2 +"초";
+    document.getElementById("badpose_back_time").innerHTML = "뒤 기울어짐 :" +cnt3 +"초";
+    document.getElementById("badpose_front_time").innerHTML = "앞으로 기울어짐 :" +cnt4 +"초";
+    
+    document.getElementById("NonePeople_time").innerHTML = "자리 비움 :" +cnt5 +"초";
 
     
     
