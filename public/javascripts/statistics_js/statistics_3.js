@@ -10,7 +10,7 @@ main.appendChild(header);
 var article = document.createElement("div");
 main.appendChild(article);
 var stretching = document.createElement("div");
-
+var posture = document.createElement("div");
 fetch("/statistics/three/stretching")
 .then((res) => res.json())
 .then((res)=>{
@@ -26,6 +26,7 @@ fetch("/statistics/three/stretching")
     average = Math.round(res.average);
     sumscore = res.sumscore;
     var cycle = Math.round(alltime/count)
+
     stretching.innerHTML = `<div id="stretching">
     <h2>스트레칭</div>
     <div>아이디: ${id}</div>
@@ -35,6 +36,35 @@ fetch("/statistics/three/stretching")
     <div>누적 스트레칭 점수: ${sumscore} 점</div>
     <div>스트레칭 주기: ${cycle} 초</div>
     </div> `
+    
     article.appendChild(stretching);
+})
+fetch("/statistics/three/posture")
+.then((res)=>res.json())
+.then((res)=>{
+    console.log(res.alltime);
+    var id = res.posture_id;
+    var alltime = res.alltime;
+    var goodpose = res.goodpose;
+    var leftpose = res.leftpose;
+    var rightpose = res.rightpose;
+    var backpose = res.backpose;
+    var frontpose = res.frontpose;
+    var nonetime  = res.nonetime;
+    var badpose = leftpose + rightpose + backpose + frontpose;
+    posture.innerHTML = `<div id="posture">
+    <h2>바른 자세</div>
+    <div>아이디: ${id}</div>
+    <div>누적 사용 시간: ${alltime} 초</div>
+    <div>좋은 자세 유지 시간: ${goodpose} 초</div>
+    <div>나쁜 자세 유지 시간: ${badpose} 초</div>
+    <div>왼쪽 자세: ${leftpose} 초</div>
+    <div>오른쪽 자세: ${rightpose} 초</div>
+    <div>뒤쪽 자세: ${backpose} 초</div>
+    <div>앞쪽 자세: ${frontpose} 초</div>
+    <div>화면에서 사라진 시간: ${nonetime} 초</div>
+    </div> `;
+
+    article.appendChild(posture);
 })
 

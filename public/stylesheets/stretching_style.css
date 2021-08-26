@@ -15,6 +15,10 @@ body {
     width: 450px;
     height: 450px;
   }
+  section.article #img{
+    width: 450px;
+    height: 450px;
+  }
   section.article #label-container{
     width: 200px;
   }

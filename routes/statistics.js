@@ -70,5 +70,27 @@ router.get('/three/stretching', function(request, response){
   })
 })
 
+router.get('/one/posture', function(request, response){
+  db.query(`SELECT * FROM posture where posture_id=1`, function(err, result){
+    if(err)throw err;
+    
+    response.status(200).json(result[0]);
+  })
+})
+router.get('/two/posture', function(request, response){
+  db.query(`SELECT * FROM posture where posture_id=2`, function(err, result){
+    if(err)throw err;
+    
+    response.status(200).json(result[0]);
+  })
+})
+router.get('/three/posture', function(request, response){
+  db.query(`SELECT * FROM posture where posture_id=3`, function(err, result){
+    if(err)throw err;
+    
+    response.status(200).json(result[0]);
+  })
+})
+
 
 module.exports = router;
