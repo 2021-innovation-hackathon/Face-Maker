@@ -46,7 +46,7 @@ function check() {
 
   let gauges = document.getElementsByClassName("Fill");
   let sum = cnt0 + cnt1 + cnt2 + cnt3 + cnt4;
-  gauges[0].style.width = (cnt0 / sum) * 81 * 100;
+  gauges[0].style.width = (cnt0 / sum) * 8.1 * 100;
   gauges[1].style.width = (cnt4 / sum) * 3.24 * 100;
   gauges[2].style.width = (cnt3 / sum) * 3.24 * 100;
   gauges[3].style.width = (cnt1 / sum) * 3.24 * 100;
