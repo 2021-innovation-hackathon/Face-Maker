@@ -1,38 +1,34 @@
 var express = require('express');
 var router = express.Router();
-var db = require('./db');
-// var mysql = require('mysql');
-// var db_config = {
-//   host:'us-cdbr-east-04.cleardb.com',
-//   user:'b629f7bf92c0a3',
-//   password:'cf6f0b58',
-//   database:'heroku_0d9db5affa3ffb5'
-// };
-// db = mysql.createConnection(db_config);
-// db.connect(function(err){
-//   console.log("connect");
-// })
-// function handleDisconnect() {
-//   db = mysql.createConnection(db_config);
-//   db.connect(function(err) {            
-//     if(err) {                            
-//       console.log('error when connecting to db:', err);
-//       setTimeout(handleDisconnect, 2000); 
-//     }
-//     console.log("connected");                                   
-//   });                                 
-                                         
-//   db.on('error', function(err) {
-//     console.log('db error', err);
-//     if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
-//       return handleDisconnect();                      
-//     } else {                                    
-//       throw err;                              
-//     }
-//   });
-// }
+var mysql = require('mysql');
+var db_config = {
+  host:'127.0.0.1',
+  user:'root',
+  password:'qsdrwe159',
+  database:'gijigae'
+};
 
-// handleDisconnect();
+function handleDisconnect() {
+  db = mysql.createConnection(db_config);
+  db.connect(function(err) {            
+    if(err) {                            
+      console.log('error when connecting to db:', err);
+      setTimeout(handleDisconnect, 2000); 
+    }
+    console.log("connected");                                   
+  });                                 
+                                         
+  db.on('error', function(err) {
+    console.log('db error', err);
+    if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
+      return handleDisconnect();                      
+    } else {                                    
+      throw err;                              
+    }
+  });
+}
+
+handleDisconnect();
 
 
 /* GET home page. */
