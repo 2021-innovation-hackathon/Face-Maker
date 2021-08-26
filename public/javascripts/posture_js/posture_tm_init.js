@@ -5,26 +5,36 @@ class tm_init{
         const $tm_init = document.createElement("div");
       $tm_init.className = "tm_init";
       $tm_init.innerHTML = `  
-      <div>바른 자세</div>
-      <button type="button" onclick="init()">Start</button>
       
-      <section class="picture">
+      
+      
+      
+      <section class="goodpose1">
+      <button type="button" onclick="init()">Start</button>
       <div><canvas id="canvas"></canvas></div>
       </section>
       
-      <section class="labels">
+
+      <section class="goodpose2">
+      
+      
       <div id="label-container"></div>
-      <div id="progress"></div>
+      <div id="progress-container"></div>
+      
+      
+      
+      
       <label class="switch">
       <input type="checkbox" onclick="onoffsound();">
       <span class="slider round"></span>
       </label>
+
       <p>OFF</p><p style="display:none;">ON</p>
+      
       </section>
     
       
-    
-      <section class="timeinfo">
+      <section class="goodpose3">
       <div id="usetime">00:00</div>
       <div id="goodposetime"></div>
       <div id="badposetime"></div>

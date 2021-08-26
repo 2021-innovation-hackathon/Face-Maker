@@ -10,11 +10,15 @@ class tm_function{
             
             
         const URL = "/model/posture_model/"; // 모델 주소
-        let model, webcam, ctx, labelContainer, maxPredictions;
+        let model, webcam, ctx, labelContainer, progressContainer, maxPredictions;
+        
+        let modelclassname = ["바른 자세","왼쪽으로 치우쳤어요","오른쪽으로 치우쳤어요","뒤로 치우쳤어요","앞으로 치우쳤어요","사용자가 화면에 없어요"];
+
         var status = "good";
         var count = 0;
+        
         var audio = new Audio('/sound/beep.MP3');
-
+        var onoff = false;
         var online = new Date();
         var today = new Date();
         var now = new Date();
@@ -59,12 +63,20 @@ async function init() {
     const canvas = document.getElementById("canvas");
     canvas.width = size; canvas.height = size;
     ctx = canvas.getContext("2d");
+
+
+    
+
+
+    // section 2부분
     labelContainer = document.getElementById("label-container");
+    progressContainer = document.getElementById("progress-container");
+
     for (let i = 0; i < maxPredictions; i++) { // and class labels
         labelContainer.appendChild(document.createElement("div"));
-        progress.appendChild(document.createElement("progress"));
-        progress.childNodes[i].value = 0;
-        progress.childNodes[i].max = 100;
+        progressContainer.appendChild(document.createElement("progress"));
+        progressContainer.childNodes[i].value = 0;
+        progressContainer.childNodes[i].max = 100;
 
     }
 }
@@ -83,48 +95,46 @@ async function predict() {
     const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
     // Prediction 2: run input through teachable machine classification model
     const prediction = await model.predict(posenetOutput);
-
+    
+    
     // 효과음 (제작)
-    // prediction[0] => prediction[1] 좋은자세에서 나쁜자세로 갈 때 알림음을 들려줌
+    
+
     if (prediction[0].probability.toFixed(2) == 1.00) {
-        
-        //cnt_goodpose++;
-        //console.log(cnt_goodpose);
-        status = "good"
+        status = "Good"
         
     }
     
     else if (prediction[1].probability.toFixed(2) == 1.00) {
-        audio.play();
+        status = "Bad_left"
         
-        status = "bad_left"
+        audiocontrol(audio,onoff);
+
     }
 
     else if (prediction[2].probability.toFixed(2) == 1.00) {
-        audio.play();
-        
-        status = "bad_right"
+        audiocontrol(audio,onoff);
+        status = "Bad_right"
     }
 
     else if (prediction[3].probability.toFixed(2) == 1.00) {
-        audio.play();
-        status = "bad_back"
+        audiocontrol(audio,onoff);
+        status = "Bad_back"
     }
 
     else if (prediction[4].probability.toFixed(2) == 1.00) {
-        audio.play();
-        status = "bad_front"
+        audiocontrol(audio,onoff);
+        status = "Bad_front"
     }
 
     else {
-        status = "none"
+        status = "None"
     }
 
     for (let i = 0; i < maxPredictions; i++) {
-        const classPrediction =
-            prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-        //labelContainer.childNodes[i].innerHTML = classPrediction;
-        progress.childNodes[i].value = prediction[i].probability.toFixed(2) * 100;
+    
+        labelContainer.childNodes[i].innerHTML = modelclassname[i];
+        progressContainer.childNodes[i].value = prediction[i].probability.toFixed(2) * 100;
     }
     
 
@@ -144,3 +154,11 @@ function drawPose(pose) {
     }
 }
 
+
+
+
+function audiocontrol(audio, onoff){
+    if(onoff){
+        audio.play();
+    }
+}
