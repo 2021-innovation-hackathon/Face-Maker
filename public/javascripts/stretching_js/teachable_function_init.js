@@ -19,6 +19,7 @@ async function init() {
     webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
     await webcam.setup(); // request access to the webcam
     await webcam.play();
+    
     document.querySelector("img").src="/images/3.png";
     await sleep(1000);
     document.querySelector("img").src="/images/2.png";
@@ -26,6 +27,7 @@ async function init() {
     document.querySelector("img").src="/images/1.png";
     await sleep(1000);
     audio_pickto.play();
+
     window.requestAnimationFrame(loop);
     document.getElementById("stretching_text").innerHTML = `정자세를 유지하세요!`;
     // append/get elements to the DOM
