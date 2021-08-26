@@ -1,3 +1,10 @@
+
+function audiocontrol(audio, onoff){
+    if(onoff){
+        audio.play();
+    }
+}
+
 function soundon(){
 	onoff = true;
 }
