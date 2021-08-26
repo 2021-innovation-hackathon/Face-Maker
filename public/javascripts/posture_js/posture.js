@@ -100,6 +100,12 @@ async function init() {
   canvas.width = width;
   canvas.height = height;
   ctx = canvas.getContext("2d");
+  
+
+  progressContainer = document.getElementById("progress-container");
+  progressContainer.appendChild(document.createElement("progress"));
+  progressContainer.childNodes[0].value = 0;
+  progressContainer.childNodes[0].max = 100;
 }
 
 async function loop(timestamp) {
@@ -161,7 +167,7 @@ async function predict() {
       playb5 = false;
     }
   }
-
+  progressContainer.childNodes[0].value = prediction[0].probability.toFixed(2) * 100;
   // finally draw the poses
   drawPose(pose);
 }
