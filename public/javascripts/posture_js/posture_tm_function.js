@@ -163,7 +163,7 @@ async function predict() {
         }
     }
 
-    else if{
+    else if (prediction[5].probability.toFixed(2) == 1.00) {
         status = "None"
 
         if (playb5){
