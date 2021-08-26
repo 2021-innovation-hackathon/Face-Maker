@@ -1,36 +1,37 @@
 var express = require('express');
 var router = express.Router();
-var mysql = require('mysql');
-var db_config = {
-  host:'127.0.0.1',
-  user:'root',
-  password:'qsdrwe159',
-  database:'gijigae'
-};
+var db = require('./db.js');
+// var mysql = require('mysql');
+// var db_config = {
+//   host:'us-cdbr-east-04.cleardb.com',
+//   user:'b629f7bf92c0a3',
+//   password:'cf6f0b58',
+//   database:'heroku_0d9db5affa3ffb5'
+// };
 
-function handleDisconnect() {
+// function handleDisconnect() {
   
-  db = mysql.createConnection(db_config);
+//   db = mysql.createConnection(db_config);
   
-  db.connect(function(err) {            
-    if(err) {                            
-      console.log('error when connecting to db:', err);
-      setTimeout(handleDisconnect, 2000); 
-    }
-    console.log("connected");                                   
-  });                                 
+//   db.connect(function(err) {            
+//     if(err) {                            
+//       console.log('error when connecting to db:', err);
+//       setTimeout(handleDisconnect, 2000); 
+//     }
+//     console.log("connected");                                   
+//   });                                 
                                          
-  db.on('error', function(err) {
-    console.log('db error', err);
-    if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
-      return handleDisconnect();                      
-    } else {                                    
-      throw err;                              
-    }
-  });
-}
+//   db.on('error', function(err) {
+//     console.log('db error', err);
+//     if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
+//       return handleDisconnect();                      
+//     } else {                                    
+//       throw err;                              
+//     }
+//   });
+// }
 
-handleDisconnect();
+// handleDisconnect();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
