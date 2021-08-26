@@ -17,11 +17,33 @@ async function predict() {
     
     if(prediction[0].probability > 0.99 && my_status == "nomal"){
         ready();
-        document.getElementById("stretching_text").innerHTML = `스트레칭 동작을 실시하세요!`;
-        document.querySelector("img").src="images/pose_1.png";
+        
+        switch(count){
+            case 0:
+                document.getElementById("stretching_text").innerHTML = `스트레칭 동작을 실시하세요!`;
+                document.querySelector("img").src="images/pose_1.png";
+                break;
+            case 1:
+                document.getElementById("stretching_text").innerHTML = `스트레칭 동작을 실시하세요!`;
+                document.querySelector("img").src="images/pose_3.png";
+                break;    
+            case 2:
+                document.getElementById("stretching_text").innerHTML = `스트레칭 동작을 실시하세요!`;
+                document.querySelector("img").src="images/pose_4.png";
+                break;    
+            case 3:
+                document.getElementById("stretching_text").innerHTML = `스트레칭 동작을 실시하세요!`;
+                document.querySelector("img").src="images/pose_5.png";
+                break;    
+            case 4:
+                document.getElementById("stretching_text").innerHTML = `스트레칭 동작을 실시하세요!`;
+                document.querySelector("img").src="images/pose_6.png";
+                break;    
+        }
+        
         
     }
-    else if(prediction[1].probability > 0.99 && my_status == "pose"){
+    else if(prediction[1].probability > 0.99 && my_status == "pose" && count == 0){
         count++;
         document.querySelector("img").src="images/pose_2.png";
         audio2.play();
@@ -32,22 +54,57 @@ async function predict() {
         document.getElementById("score").innerHTML="현재점수: " + now_score;
         document.getElementById("allscore").innerHTML += "<br>"+now_score;
         await sleep(500);
-
-        if(count > 2){
-            
-            count = 0;
-            my_status = "rest";
-            today = new Date();
-            webcam.pause();
-            canvas.style.display="none";
-            document.getElementById("posetime").style.display="none";
-            document.getElementById("stretching_text").innerHTML = `스트레칭 시간을 기다리세요!`;
-            document.getElementById("allscore").innerHTML = "기록: ";
-            fetch("/stretching/count");
-        }
-
     }
-    else if(my_status == "pose"){
+    else if(prediction[2].probability > 0.99 && my_status == "pose" && count == 1){
+        count++;
+        document.querySelector("img").src="images/pose_2.png";
+        audio2.play();
+        my_status = "nomal";
+        document.getElementById("stretching_text").innerHTML = `성공!`;
+        now_score = Math.round(prediction[2].probability*100);
+        fetch(`/stretching/average/${now_score}`);
+        document.getElementById("score").innerHTML="현재점수: " + now_score;
+        document.getElementById("allscore").innerHTML += "<br>"+now_score;
+        await sleep(500);
+    }
+    else if(prediction[3].probability > 0.99 && my_status == "pose" && count == 2){
+        count++;
+        document.querySelector("img").src="images/pose_2.png";
+        audio2.play();
+        my_status = "nomal";
+        document.getElementById("stretching_text").innerHTML = `성공!`;
+        now_score = Math.round(prediction[3].probability*100);
+        fetch(`/stretching/average/${now_score}`);
+        document.getElementById("score").innerHTML="현재점수: " + now_score;
+        document.getElementById("allscore").innerHTML += "<br>"+now_score;
+        await sleep(500);
+    }
+    else if(prediction[4].probability > 0.99 && my_status == "pose" && count == 3){
+        count++;
+        document.querySelector("img").src="images/pose_2.png";
+        audio2.play();
+        my_status = "nomal";
+        document.getElementById("stretching_text").innerHTML = `성공!`;
+        now_score = Math.round(prediction[4].probability*100);
+        fetch(`/stretching/average/${now_score}`);
+        document.getElementById("score").innerHTML="현재점수: " + now_score;
+        document.getElementById("allscore").innerHTML += "<br>"+now_score;
+        await sleep(500);
+    }
+    else if(prediction[5].probability > 0.99 && my_status == "pose" && count == 4){
+        count++;
+        document.querySelector("img").src="images/pose_2.png";
+        audio2.play();
+        my_status = "nomal";
+        document.getElementById("stretching_text").innerHTML = `성공!`;
+        now_score = Math.round(prediction[5].probability*100);
+        fetch(`/stretching/average/${now_score}`);
+        document.getElementById("score").innerHTML="현재점수: " + now_score;
+        document.getElementById("allscore").innerHTML += "<br>"+now_score;
+        await sleep(500);
+    }
+    
+    else if(my_status=="pose"){
         my_status = "nomal";
         document.getElementById("stretching_text").innerHTML = `실패!`;
         now_score = Math.round(prediction[1].probability*100);
@@ -57,7 +114,18 @@ async function predict() {
     }
     
 
-    
+    if(count > 4){
+            
+        count = 0;
+        my_status = "rest";
+        today = new Date();
+        webcam.pause();
+        canvas.style.display="none";
+        document.getElementById("posetime").style.display="none";
+        document.getElementById("stretching_text").innerHTML = `스트레칭 시간을 기다리세요!`;
+        document.getElementById("allscore").innerHTML = "기록: ";
+        fetch("/stretching/count");
+    }
     // finally draw the poses
     drawPose(pose);
 }
