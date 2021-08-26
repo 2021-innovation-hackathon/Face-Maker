@@ -34,7 +34,7 @@ timerId = setInterval(check, 1000);
 
 function check() {
   now = new Date();
-  //fetch(`/stretching/alltime`);
+  fetch(`/stretching/alltime`); //경과시간 체크
 
   now_seconds = Math.round((now - today) / 1000);
 
@@ -135,7 +135,7 @@ async function predict() {
     ost[1].innerText = "성공!";
 
     now_score += Math.round(prediction[count + 1].probability * 100);
-    //fetch(`/stretching/average/${now_score}`);
+    fetch(`/stretching/average/${now_score}`); //현재 점수 추가
     await sleep(1000);
     count++;
   } else if (my_status == "pose") {
@@ -154,7 +154,7 @@ async function predict() {
     canvas.style.display = "none";
     ost[0].style.display = "none";
     ost[1].innerText = "스트레칭 시간을 기다리세요!";
-    //fetch("/stretching/count");
+    fetch("/stretching/count"); //스트레칭 횟수 +1
   }
   // finally draw the poses
   drawPose(pose);

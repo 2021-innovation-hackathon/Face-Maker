@@ -52,15 +52,12 @@ router.get('/alert', function(req, res, next) {
 
 
 router.get('/count', function(req, res) {
-  db.query(`SELECT * from stretching where stretching_id=1`, function (err2, re){
-    if(err2) throw err2;
-    
-  
-    db.query(`UPDATE stretching set count=${re[0].count}+1 WHERE stretching_id=1`, function(err, result){
+
+    db.query(`UPDATE stretching set count=count+1 WHERE stretching_id=1`, function(err, result){
       if(err)throw err;
     
       res.status(200).json(result[0]);
-    })
+    
   })
 })
 router.get('/alltime', function(req, res) {

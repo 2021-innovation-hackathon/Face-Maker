@@ -41,14 +41,9 @@ router.get('/', function(req, res, next) {
 router.get('/page/1', function(req, res, next) { 
   res.render('page_1');
 });
-router.get('/page/2', function(req, res, next) { 
-  res.render('page_2');
-});
-router.get('/page/3', function(req, res, next) { 
-  res.render('page_3');
-});
 
 
+//스트레칭 정보 받기
 router.get('/one/stretching', function(request, response){
   db.query(`SELECT * FROM stretching where stretching_id=1`, function(err, result){
     if(err)throw err;
@@ -56,21 +51,8 @@ router.get('/one/stretching', function(request, response){
     response.status(200).json(result[0]);
   })
 })
-router.get('/two/stretching', function(request, response){
-  db.query(`SELECT * FROM stretching where stretching_id=2`, function(err, result){
-    if(err)throw err;
-    
-    response.status(200).json(result[0]);
-  })
-})
-router.get('/three/stretching', function(request, response){
-  db.query(`SELECT * FROM stretching where stretching_id=3`, function(err, result){
-    if(err)throw err;
-    
-    response.status(200).json(result[0]);
-  })
-})
 
+//자세 정보 받기
 router.get('/one/posture', function(request, response){
   db.query(`SELECT * FROM posture where posture_id=1`, function(err, result){
     if(err)throw err;
@@ -78,20 +60,41 @@ router.get('/one/posture', function(request, response){
     response.status(200).json(result[0]);
   })
 })
-router.get('/two/posture', function(request, response){
-  db.query(`SELECT * FROM posture where posture_id=2`, function(err, result){
-    if(err)throw err;
+
+// router.get('/page/2', function(req, res, next) { 
+//   res.render('page_2');
+// });
+// router.get('/page/3', function(req, res, next) { 
+//   res.render('page_3');
+// });
+// router.get('/two/stretching', function(request, response){
+//   db.query(`SELECT * FROM stretching where stretching_id=2`, function(err, result){
+//     if(err)throw err;
     
-    response.status(200).json(result[0]);
-  })
-})
-router.get('/three/posture', function(request, response){
-  db.query(`SELECT * FROM posture where posture_id=3`, function(err, result){
-    if(err)throw err;
+//     response.status(200).json(result[0]);
+//   })
+// })
+// router.get('/three/stretching', function(request, response){
+//   db.query(`SELECT * FROM stretching where stretching_id=3`, function(err, result){
+//     if(err)throw err;
     
-    response.status(200).json(result[0]);
-  })
-})
+//     response.status(200).json(result[0]);
+//   })
+// })
+// router.get('/two/posture', function(request, response){
+//   db.query(`SELECT * FROM posture where posture_id=2`, function(err, result){
+//     if(err)throw err;
+    
+//     response.status(200).json(result[0]);
+//   })
+// })
+// router.get('/three/posture', function(request, response){
+//   db.query(`SELECT * FROM posture where posture_id=3`, function(err, result){
+//     if(err)throw err;
+    
+//     response.status(200).json(result[0]);
+//   })
+// })
 
 
 module.exports = router;
