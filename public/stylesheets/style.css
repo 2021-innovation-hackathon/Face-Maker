@@ -1,0 +1,303 @@
+:root {
+  /* color */
+  --color-beige: #fdfcee;
+  --color-white: #ffffff;
+  --color-blue: #229be6;
+  --color-black: #212529;
+  --color-grey: #d2d2d2;
+
+  /* font size */
+  --font-xl: 50px;
+  --font-l: 40px;
+  --font-m: 25px;
+  --font-s: 22px;
+
+  /* layout size */
+  --layout-xl: 150px;
+  --layout-l: 100px;
+  --layout-m: 50px;
+  --layout-s: 20px;
+  --layout-ss: 10px;
+}
+
+@font-face {
+  font-family: "BinggraeTaom";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.1/BinggraeTaomA1.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--color-black);
+}
+button img {
+  height: 40px;
+  width: 40px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font-family: "BinggraeTaom";
+  font-size: var(--font-s);
+  color: var(--color-font);
+  box-sizing: border-box;
+}
+
+#App {
+  height: 100%;
+  width: 100%;
+}
+
+.MainDiv {
+  width: 100%;
+  height: 100%;
+  padding: var(--layout-m);
+  padding-top: 0px;
+  background-color: var(--color-beige);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.DesignBar {
+  width: 100vw;
+  height: 10px;
+  background-color: var(--color-blue);
+}
+
+.MenuContainer {
+  width: 100%;
+  height: 135px;
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.MenuContainer > .Button {
+  margin-right: 100px;
+}
+
+.BtnContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.BtnContainer .MenuBtn {
+  padding: 20px;
+  margin-right: 150px;
+  text-align: center;
+  font-size: var(--font-m);
+}
+
+.ContentContainer {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-white);
+  border-radius: 30px;
+  box-shadow: 0px 5px 30px rgba(21, 25, 29, 40%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.TitleContainer {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.TitleContainer h1 {
+  font-size: var(--font-l);
+}
+
+.ArticleContainer,
+.sArticleContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1 1;
+}
+
+.ArticleContainer .Article,
+.sArticleContainer .sArticle {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  padding: var(--layout-m);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.sArticleContainer .sArticle {
+  padding: 0;
+}
+
+.ArticleContainer .Article:nth-child(2) {
+  align-items: flex-end;
+}
+
+.sArticleContainer .sArticle:first-child {
+  width: 1200px;
+}
+
+.sArticleContainer .sArticle:nth-child(2) {
+  align-items: flex-end;
+}
+
+.sArticleContainer .sArticle .Camera {
+  height: 680px;
+  width: 100%;
+  background-color: skyblue;
+  border-radius: 30px 0 0 0;
+}
+
+.sArticleContainer .sArticle .InfoContainer {
+  width: 100%;
+  height: 100%;
+  padding: 0 var(--layout-xl);
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sArticle .InfoContainer .Info {
+  width: 200px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.InfoContainer .Info .Title {
+  color: var(--color-black);
+  font-size: var(--font-s);
+  margin-bottom: 10px;
+}
+
+.InfoContainer .Info .Value {
+  color: var(--color-black);
+  font-size: var(--font-xl);
+}
+
+.sArticleContainer .sArticle .Pictogram {
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+  border-radius: 0 30px 0 0;
+}
+
+.ArticleContainer .Article .Camera {
+  height: 600px;
+  width: 800px;
+}
+
+.Article .GaugeContainer {
+  width: 100%;
+  display: flex;
+  margin: var(--layout-m) 0;
+  flex-direction: column;
+  align-items: flex-end;
+  align-content: center;
+}
+
+.Article .GaugeContainer > * {
+  padding: var(--layout-s) 0;
+}
+
+.GaugeContainer .Gauge {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.GaugeContainer .Gauge:not(:first-child) > * {
+  margin-left: var(--layout-s);
+}
+
+.GaugeContainer .Gauge:first-child {
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.GaugeContainer .Gauge .Title {
+  width: 200px;
+  font-size: var(--font-s);
+  text-align: right;
+}
+
+.GaugeContainer .Gauge:first-child .Title {
+  padding-bottom: var(--font-s);
+  font-size: var(--font-m);
+  font-weight: bold;
+  text-align: left;
+}
+
+.GaugeContainer .Gauge .Bar {
+  width: 50%;
+  height: 20px;
+  background-color: var(--color-grey);
+  border-radius: 10px;
+}
+
+.GaugeContainer .Gauge:first-child .Bar {
+  width: 100%;
+  height: 40px;
+  background-color: var(--color-grey);
+  border-radius: 20px;
+}
+
+.GaugeContainer .Gauge .Bar .Fill {
+  width: 50px;
+  height: 100%;
+  background-color: var(--color-black);
+  border-radius: 20px;
+}
+
+.GaugeContainer .Gauge:first-child .Bar .Fill {
+  background-color: var(--color-blue);
+}
+
+.GaugeContainer .Gauge .Value {
+  width: 25px;
+  text-align: left;
+}
+
+.ContentContainer > .Gauge {
+  width: 100%;
+  height: 40px;
+  background-color: var(--color-grey);
+  border-radius: 0 0 30px 30px;
+}
+
+.ContentContainer .Fill {
+  width: 20%;
+  height: 40px;
+  background-color: var(--color-blue);
+  border-radius: 0 0 30px 30px;
+}

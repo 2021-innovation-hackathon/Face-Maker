@@ -1,31 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>기지개</title>
-    <link rel="stylesheet" href="/stylesheets/posture_style.css">
-</head>
-<body>
-    자세 교정 입니다
-    <a href="/">홈페이지</a>
+<html>
+    <header>
+        <title>css testing~</title>
+        <link rel="stylesheet" href="/stylesheets/style.css">
+    </header>
 
-    <!-- <script src="/javascripts/posture_js/posture_WepWorker.js"></script> -->
-    <div id="main"></div>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <body>
+        <div class="MainDiv" id="main">
+            <div class="DesignBar"></div>
+            <div class="MenuContainer">
+                <span class="BtnContainer">
+                    <button class="MenuBtn" style="font-weight: bold;">바른자세</button>
+                    <button class="MenuBtn">스트레칭</button>
+                    <button class="MenuBtn">내 통계</button>
+                </span>
+                <button class="Button">
+                    <img src="./image/icon/menu.svg" alt="menu"></img>
+                </button>
+            </div>
+            <div class="ContentContainer">
+                <div class="TitleContainer">
+                    <h1>바른 자세를 유지하세요!</h1>
+                </div>
+                <div class="ArticleContainer">
+                    <article class="Article">
+                        <div class="Camera">
+                            <canvas id="canvas"></canvas>
+                        </div>
+                    </article>
+                    <article class="Article">
+                        <div class="GaugeContainer">
+                            <div class="Gauge">
+                                <div class="Title">바른 자세 지수</div>
+                                <div class="Bar">
+                                    <div class="Fill"></div>
+                                </div>
+                            </div>
+                            <div class="Gauge">
+                                <div class="Title">졸지 마세요~</div>
+                                <div class="Bar">
+                                    <div class="Fill"></div>
+                                </div>
+                                <div class="Value">4</div>
+                            </div>
+                            <div class="Gauge">
+                                <div class="Title">누우시면 안돼염!</div>
+                                <div class="Bar">
+                                    <div class="Fill"></div>
+                                </div>
+                                <div class="Value">12</div>
+                            </div>
+                            <div class="Gauge">
+                                <div class="Title">왼쪽으로 기울어요</div>
+                                <div class="Bar">
+                                    <div class="Fill"></div>
+                                </div>
+                                <div class="Value">9</div>
+                            </div>
+                            <div class="Gauge">
+                                <div class="Title">오른쪽으로 기울어요</div>
+                                <div class="Bar">
+                                    <div class="Fill"></div>
+                                </div>
+                                <div class="Value">3</div>
+                            </div>
+                        </div>
+                        <button class="Button">
+                            <img src="./image/icon/sound.svg" alt="menu"></img>
+                        </button>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-    
-    <script src="/javascripts/posture_js/posture_timer.js"></script>
-    <script src="/javascripts/posture_js/posture_tm_function.js"></script>
-    <script src="/javascripts/posture_js/posture_onoffsound.js"></script>
-    <script src="/javascripts/posture_js/posture_App.js"></script>
-    <script src="/javascripts/posture_js/posture_tm_init.js"></script>
-    <script src="/javascripts/posture_js/posture_MainUI.js"></script>
-    <script src="/javascripts/posture_js/posture_main.js"></script>
-    
-    
-
-</body>
+    <script src="/javascripts/posture_js/posture.js"></script>
+    </body>
 </html>

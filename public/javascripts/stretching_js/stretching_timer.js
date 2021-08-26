@@ -1,13 +1,11 @@
-
 //시간 측정을 위한 클래스이다.
-class timer{
-    $timer = null;
-    $time = null;
-    constructor($target){
-        
-      const $time = document.createElement("script");
-      $time.className = "timer";
-      $time.innerHTML = `
+class timer {
+  $timer = null;
+  $time = null;
+  constructor($target) {
+    const $time = document.createElement("script");
+    $time.className = "timer";
+    $time.innerHTML = `
       
       
       
@@ -17,14 +15,9 @@ class timer{
             
       `;
 
-      this.$time = $time;
-      $target.appendChild($time);
-      
-
-      
-    }
-    
-    
+    this.$time = $time;
+    $target.appendChild($time);
+  }
 }
 
 function check() {
@@ -71,6 +64,5 @@ function check() {
         
         
     }
-        
-    
+  }
 }
