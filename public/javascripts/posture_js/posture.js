@@ -1,8 +1,6 @@
 const URL = "/model/posture_model/"; // 모델 주소
 let model, webcam, ctx, labelContainer, progressContainer, maxPredictions;
 
-timerId = setInterval(check, 1000);
-
 var audio = new Audio("/sound/beep.MP3");
 var onoff = false;
 var online = new Date();
@@ -24,9 +22,7 @@ var cnt4 = 0;
 var cnt5 = 0;
 
 init();
-setSoundBtn();
-
-function setSoundBtn() {}
+timerId = setInterval(check, 1000);
 
 function check() {
   now = new Date();

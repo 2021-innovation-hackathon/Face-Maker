@@ -1,11 +1,13 @@
 var express = require('express');
 var router = express.Router();
+
+
 var mysql = require('mysql');
 var db_config = {
-  host:'127.0.0.1',
-  user:'root',
-  password:'qsdrwe159',
-  database:'gijigae'
+  host:'us-cdbr-east-04.cleardb.com',
+  user:'b629f7bf92c0a3',
+  password:'cf6f0b58',
+  database:'heroku_0d9db5affa3ffb5'
 };
 
 function handleDisconnect() {
@@ -50,15 +52,12 @@ router.get('/alert', function(req, res, next) {
 
 
 router.get('/count', function(req, res) {
-  db.query(`SELECT * from stretching where stretching_id=1`, function (err2, re){
-    if(err2) throw err2;
-    
-  
-    db.query(`UPDATE stretching set count=${re[0].count}+1 WHERE stretching_id=1`, function(err, result){
+
+    db.query(`UPDATE stretching set count=count+1 WHERE stretching_id=1`, function(err, result){
       if(err)throw err;
     
       res.status(200).json(result[0]);
-    })
+    
   })
 })
 router.get('/alltime', function(req, res) {

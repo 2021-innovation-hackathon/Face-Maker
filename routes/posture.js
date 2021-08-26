@@ -1,11 +1,12 @@
 var express = require('express');
 var router = express.Router();
+
 var mysql = require('mysql');
 var db_config = {
-  host:'127.0.0.1',
-  user:'root',
-  password:'qsdrwe159',
-  database:'gijigae'
+  host:'us-cdbr-east-04.cleardb.com',
+  user:'b629f7bf92c0a3',
+  password:'cf6f0b58',
+  database:'heroku_0d9db5affa3ffb5'
 };
 
 function handleDisconnect() {
