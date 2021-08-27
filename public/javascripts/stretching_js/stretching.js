@@ -45,7 +45,6 @@ function check() {
         gauge.style.width = "0%";
         playbutton.style.display = "block";
         img.style.display = "none";
-        now_score = 0;
         audio.play();
         audio_pickto.play();
         sound_check = true;
@@ -119,9 +118,7 @@ async function predict() {
   values[1].innerHTML = `${count} / 5`;
   values[2].innerText = `${now_score}점`;
   gauge.style.width = `${count * 20}%`;
-  if(count == 5){
-    await sleep(1000);
-  }
+
   if (prediction[0].probability > 0.8 && my_status == "normal") {
     ready();
 
@@ -130,7 +127,8 @@ async function predict() {
   } else if (
     my_status == "pose" &&
     count <= 4 &&
-    prediction[count + 1].probability > 0.8) {
+    prediction[count + 1].probability > 0.8
+  ) {
     audio2.play();
     my_status = "normal";
     img.src = `/images/pictogram/ptpose_1.png`;
@@ -140,22 +138,20 @@ async function predict() {
     fetch(`/stretching/average/${now_score}`); //현재 점수 추가
     await sleep(1000);
     count++;
-  } 
-  else if (my_status == "pose") {
+  } else if (my_status == "pose") {
     my_status = "normal";
     ost[1].innerText = `실패!`;
     await sleep(1000);
   }
 
   if (count > 4) {
-    my_status = "rest";
-    await sleep(1000);
     count = 0;
-    
+    my_status = "rest";
     today = new Date();
-
+    sound_check = true;
     audio_pickto.pause();
     webcam.pause();
+
     canvas.style.display = "none";
     ost[0].style.display = "none";
     ost[1].innerText = "스트레칭 시간을 기다리세요!";
