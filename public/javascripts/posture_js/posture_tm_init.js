@@ -2,11 +2,12 @@ class tm_init{
     $tm_init = null;
     $time = null;
     constructor($target){
-        const $tm_init = document.createElement("div");
+      const $tm_init = document.createElement("div");
       $tm_init.className = "tm_init";
       $tm_init.innerHTML = `  
       
       
+
       
       
       <section class="goodpose1">
@@ -47,6 +48,9 @@ class tm_init{
       </section>
       
       
+      
+
+
       
       `;
       this.$tm_init = $tm_init;

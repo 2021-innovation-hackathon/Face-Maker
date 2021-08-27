@@ -161,9 +161,6 @@ button img {
   width: 1200px;
 }
 
-.sArticleContainer .sArticle:nth-child(2) {
-}
-
 .sArticleContainer .sArticle .Play {
   align-content: center;
   width: 100px;
@@ -218,7 +215,8 @@ button img {
   width: 800px;
 }
 
-.Article .GaugeContainer {
+.Article .GaugeContainer,
+.stArticleContainer .GaugeContainer {
   width: 100%;
   display: flex;
   margin: var(--layout-m) 0;
@@ -227,7 +225,8 @@ button img {
   align-content: center;
 }
 
-.Article .GaugeContainer > * {
+.Article .GaugeContainer > *,
+.stArticleContainer .GaugeContainer > * {
   padding: var(--layout-s) 0;
 }
 
@@ -250,7 +249,7 @@ button img {
 }
 
 .GaugeContainer .Gauge .Title {
-  width: 200px;
+  width: 230px;
   font-size: var(--font-s);
   text-align: right;
 }
@@ -323,4 +322,63 @@ button img {
 .Camera .OST .OnScreenTxt {
   font-size: var(--font-xl);
   margin-right: var(--layout-m);
+}
+
+/*statistic*/
+.stContentContainer {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-white);
+  border-radius: 30px;
+  box-shadow: 0px 5px 30px rgba(21, 25, 29, 40%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.TabBtnContainer {
+  width: 20%;
+  height: 100%;
+}
+
+.TabBtnContainer .TabBtn {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 3px 5px rgba(21, 25, 29, 20%);
+}
+
+.stArticleContainer {
+  width: 80%;
+  height: 100%;
+  box-shadow: -7px 0px 5px rgba(21, 25, 29, 20%);
+  padding: var(--layout-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  align-items: center;
+}
+
+.stArticleContainer .GaugeContainer {
+  width: 80%;
+  height: 80%;
+}
+.stArticleContainer .GaugeContainer .Gauge .Fill {
+  width: 0;
+}
+
+progress {
+  -webkit-appearance: none;
+}
+
+::-webkit-progress-bar {
+  border-radius: 20px 20px 20px 20px; 
+  background-color: grey;
+}
+
+::-webkit-progress-value {
+  border-radius: 20px 20px 20px 20px; 
+  background-color: skyblue;
 }

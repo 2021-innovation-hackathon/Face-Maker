@@ -1,21 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/stylesheets/posture_style.css">
-</head>
-<body>
-    통계 탭
-    <div id="main"></div>
-    <a href="/statistics/page/1">통계1</a>
-    <a href="/statistics/page/2">통계2</a>
-    <a href="/statistics/page/3">통계3</a>
-    <a href="/">홈페이지</a>
-    
-    
-   
-</body>
+<html>
+    <header>
+        <title>기지개 - 내 통계</title>
+        <link rel="stylesheet" href="/stylesheets/style.css">
+    </header>
+
+    <body>
+        <div class="MainDiv">
+            <div class="DesignBar"></div>
+            <div class="MenuContainer">
+                <span class="BtnContainer">
+                    <button class="MenuBtn">바른자세</button>
+                    <button class="MenuBtn">스트레칭</button>
+                    <button class="MenuBtn" style="font-weight: bold;">내 통계</button>
+                </span>
+                <button class="Button">
+                    <img src="./images/icon/menu.svg" alt="menu" id="btn"></img>
+                </button>
+            </div>
+            <div class="stContentContainer">
+                <div class="TabBtnContainer">
+                    <div class="TabBtn">내 자세</div>
+                    <div class="TabBtn">스트레칭 기록</div>
+                </div>
+                <div class="stArticleContainer">
+                    <div class="GaugeContainer">
+                        <div class="Gauge">
+                            <div class="Title">누적 바른자세 지수</div>
+                            <div class="Bar">
+                                <div class="Fill" style="width: 30%;"></div>
+                            </div>
+                        </div>
+                        <div class="Gauge">
+                            <div class="Title">이만큼 숙였어요</div>
+                            <div class="Bar">
+                                <div class="Fill" style="width: 30%;"></div>
+                            </div>
+                            <div class="Value"></div>
+                        </div>
+                        <div class="Gauge">
+                            <div class="Title">이만큼 누웠어요</div>
+                            <div class="Bar">
+                                <div class="Fill" style="width: 30%;"></div>
+                            </div>
+                            <div class="Value"></div>
+                        </div>
+                        <div class="Gauge">
+                            <div class="Title">왼쪽으로 기울었어요</div>
+                            <div class="Bar">
+                                <div class="Fill" style="width: 30%;"></div>
+                            </div>
+                            <div class="Value"></div>
+                        </div>
+                        <div class="Gauge">
+                            <div class="Title">오른쪽으로 기울었어요</div>
+                            <div class="Bar">
+                                <div class="Fill" style="width: 30%;"></div>
+                            </div>
+                            <div class="Value"></div>
+                        </div>
+                    </div>
+                    <div class="GaugeContainer" style="display:none;">
+                        <div class="Gauge">
+                            <div class="Title">누적 스트레칭 시간</div>
+                            <div class="Bar">
+                                <div class="Fill" style="width: 30%;"></div>
+                            </div>
+                        </div>
+                        <div class="Gauge">
+                            <div class="Title">스트레칭 횟수</div>
+                            <div class="Bar">
+                                <div class="Fill" style="width: 30%;"></div>
+                            </div>
+                            <div class="Value"></div>
+                        </div>
+                        <div class="Gauge">
+                            <div class="Title">총 스트레칭 점수</div>
+                            <div class="Bar">
+                                <div class="Fill" style="width: 30%;"></div>
+                            </div>
+                            <div class="Value"></div>
+                        </div>
+                        <div class="Gauge">
+                            <div class="Title">평균 점수</div>
+                            <div class="Bar">
+                                <div class="Fill" style="width: 30%;"></div>
+                            </div>
+                            <div class="Value"></div>
+                        </div>
+                        <div class="Gauge">
+                            <div class="Title">오른쪽으로 기울었어요</div>
+                            <div class="Bar">
+                                <div class="Fill" style="width: 30%;"></div>
+                            </div>
+                            <div class="Value"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+    <script src="/javascripts/statistics_js/statistics.js"></script>
+    <script src="/javascripts/buttons.js"></script>
+    </body>
 </html>
