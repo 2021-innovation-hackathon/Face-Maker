@@ -40,20 +40,21 @@ function check() {
 
   if (now_seconds > 20) {
     if (my_status == "rest") {
-      if (sound_check == false) {
+      
         ost.innerText = "";
         gauge.style.width = "0%";
         playbutton.style.display = "block";
         img.style.display = "none";
+        now_score = 0;
         audio.play();
-        //audio_pickto.play();
+        audio_pickto.play();
         sound_check = true;
         window.open(
           "/stretching/alert",
           "_blank",
           "width=200, height=200, top=300, left=500 toolbar=no, menubar=no,location=no, scrollbars=no,status=no,resizable=no"
         );
-      }
+      
 
       webcam.play();
       my_status = "normal";
@@ -107,18 +108,20 @@ async function predict() {
   const prediction = await model.predict(posenetOutput);
 
   if (now_seconds % 60 < 10) {
-    values[0].innerText = `0${Math.round(now_seconds / 60)} : 0${Math.round(
+    values[0].innerText = `0${Math.floor(now_seconds / 60)} : 0${Math.floor(
       now_seconds % 60
     )}`;
   } else {
-    values[0].innerText = `0${Math.round(now_seconds / 60)} : ${Math.round(
+    values[0].innerText = `0${Math.floor(now_seconds / 60)} : ${Math.floor(
       now_seconds % 60
     )}`;
   }
-  values[1].innerHTML = `${count + 1} / 5`;
+  values[1].innerHTML = `${count} / 5`;
   values[2].innerText = `${now_score}점`;
   gauge.style.width = `${count * 20}%`;
-
+  if(count == 5){
+    await sleep(1000);
+  }
   if (prediction[0].probability > 0.8 && my_status == "normal") {
     ready();
 
@@ -127,26 +130,28 @@ async function predict() {
   } else if (
     my_status == "pose" &&
     count <= 4 &&
-    prediction[count + 1].probability > 0.8
-  ) {
+    prediction[count + 1].probability > 0.8) {
     audio2.play();
     my_status = "normal";
     img.src = `/images/pictogram/ptpose_1.png`;
     ost[1].innerText = "성공!";
 
-    now_score += Math.round(prediction[count + 1].probability * 100);
+    now_score = Math.round(prediction[count + 1].probability * 100);
     fetch(`/stretching/average/${now_score}`); //현재 점수 추가
     await sleep(1000);
     count++;
-  } else if (my_status == "pose") {
+  } 
+  else if (my_status == "pose") {
     my_status = "normal";
     ost[1].innerText = `실패!`;
     await sleep(1000);
   }
 
   if (count > 4) {
-    count = 0;
     my_status = "rest";
+    await sleep(1000);
+    count = 0;
+    
     today = new Date();
 
     audio_pickto.pause();
