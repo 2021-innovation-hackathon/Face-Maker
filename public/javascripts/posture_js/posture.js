@@ -21,6 +21,10 @@ var cnt3 = 0;
 var cnt4 = 0;
 var cnt5 = 0;
 
+//소리 클릭 이벤트 추가
+let sound = document.getElementById("sound");
+sound.addEventListener('click', soundon);
+
 init();
 timerId = setInterval(check, 1000);
 
