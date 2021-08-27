@@ -111,13 +111,37 @@ button img {
   height: 100%;
   background-color: transparent;
   border-radius: 30px;
+  padding-top: 150px;
   box-shadow: 0px 5px 30px rgba(21, 25, 29, 40%);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.ContentContainer .ImageContainer {
+  width: 50%;
+  height: 50%;
+  position: relative;
+}
+
+.ContentContainer .ImageContainer img {
+  width: 100%;
+}
+
 .TextLine {
   margin-right: 300px;
   font-size: var(--font-m);
+}
+
+.TitleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  position: absolute;
+  top: -200px;
+  left: -170px;
+}
+
+.Title {
+  font-size: 160px;
 }
